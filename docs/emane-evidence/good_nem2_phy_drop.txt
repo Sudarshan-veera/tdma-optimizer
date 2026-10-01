@@ -1,0 +1,13 @@
+nem 2   phy BroadcastPacketDropTable0
+| NEM | Out-of-Band | Rx Sensitivity | Propagation Model | Gain Location | Gain Horizon | Gain Profile | Not FOI | Spectrum Clamp | Fade Location | Fade Algorithm | Fade Select | Antenna Freq | Gain Antenna | Missing Control |
+| 4   | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 8   | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 9   | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 10  | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 11  | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 12  | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 13  | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 14  | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 15  | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+| 16  | 0           | 3              | 0                 | 0             | 0            | 0            | 0       | 0              | 0             | 0              | 0           | 0            | 0            | 0               |
+

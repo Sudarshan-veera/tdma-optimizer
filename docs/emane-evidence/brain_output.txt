@@ -1,0 +1,42 @@
+================================================================
+ TDMA TOPOLOGY OPTIMIZATION REPORT
+================================================================
+Total Nodes Processed : 16
+Configured Radio Range : 500.0 meters
+Optimized Frame Length : 9 unique timeslots (Lower is better)
+Optimality : PROVEN OPTIMAL; theoretical lower bound = 9
+Spatial Reuse : 1.78 nodes/slot on average, up to 4 concurrent; 9 slots vs 16 for one-node-per-slot / token passing (1.78x capacity gain)
+----------------------------------------------------------------
+NODE -> SLOT ASSIGNMENTS:
+ Node_01: Slot 8
+ Node_02: Slot 5
+ Node_03: Slot 4
+ Node_04: Slot 8
+ Node_05: Slot 6
+ Node_06: Slot 2
+ Node_07: Slot 0
+ Node_08: Slot 7
+ Node_09: Slot 7
+ Node_10: Slot 1
+ Node_11: Slot 3
+ Node_12: Slot 6
+ Node_13: Slot 8
+ Node_14: Slot 4
+ Node_15: Slot 5
+ Node_16: Slot 8
+
+STRUCTURAL TDMA SCHEDULE MATRIX (Slot x Node Boolean Matrix):
+Slot \ Node | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16
+-----------------------------------------------------------------------------------------
+Slot 00     | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
+Slot 01     | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0
+Slot 02     | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
+Slot 03     | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+Slot 04     | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0
+Slot 05     | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0
+Slot 06     | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0
+Slot 07     | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0
+Slot 08     | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1
+-----------------------------------------------------------------------------------------
+Execution finalized cleanly. Schedule verified conflict-free.
+Saved schedule: /tmp/emane-run/schedule.json

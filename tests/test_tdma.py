@@ -103,4 +103,27 @@ def test_bridge_xml_matches_schedule(tmp_path):
             tx[int(nem)] = int(slot.get("index"))
     assert tx == {eb.nem_id(n): v for n, v in s.items()}       # every node transmits exactly once
     eel = eb.make_eel(data).splitlines()
-    assert len(eel) == 16 * 15
+    assert len(eel) == 16
+    assert all(len(l.split()) == 3 + 15 for l in eel)
+
+
+def test_emane_config_set(tmp_path):
+    import glob
+    import json
+    import subprocess
+    import sys
+    coords = t.demo_coords()
+    _, _, s, _, _ = run(coords)
+    sj = tmp_path / "s.json"
+    sj.write_text(json.dumps({"frame_length": max(s.values()) + 1, "range": 500.0,
+                              "coords": coords, "slots": s}))
+    r = subprocess.run([sys.executable, "emane/gen_configs.py", str(sj), "--out", str(tmp_path / "o")],
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    files = glob.glob(str(tmp_path / "o" / "*.xml"))
+    assert len(files) == 16 * 3 + 5          # platform/nem/transport per NEM + 5 shared files
+    for f in files:
+        ET.parse(f)                           # well-formed
+    good = (tmp_path / "o" / "schedule_good.xml").read_text()
+    bad = (tmp_path / "o" / "schedule_bad.xml").read_text()
+    assert good != bad and "nodes='1,3," in bad.replace("4,13,16", "")  # 03 moved into 01's slot

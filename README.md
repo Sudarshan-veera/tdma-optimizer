@@ -39,14 +39,26 @@ On 16 nodes every heuristic lands within about 1 slot of optimal (see `benchmark
 the exact step is what turns "good" into "proven".
 
 ## Part 2: EMANE
-`emane_bridge.py schedule.json` writes
-* `schedule.xml`: EMANE TDMA full schedule (1 frame, 1000 us slots, `nodes='1,4,13,16'` = spatial reuse),
-* `scenario.eel`: pathloss events (80 dB in range, 200 dB out of range) so EMANE matches the 500 m model.
+`emane_bridge.py schedule.json` writes `schedule.xml` (EMANE TDMA full schedule: 1 frame, 1000 us slots,
+`nodes='1,4,13,16'` = spatial reuse) and `scenario.eel` (pathloss: 80 dB in range, 200 dB out of range,
+so EMANE matches the 500 m model).
 
-Apply with `emaneevent-tdmaschedule schedule.xml -i lo`, check acceptance with
-`emanesh localhost get stat 1 mac | grep scheduler`.
+### Run it (Docker, EMANE 1.5.3 on Ubuntu 24.04)
+```bash
+docker build -t tdma-emane -f emane/Dockerfile .
+docker run --rm -it --privileged -e HOST_UID=$(id -u) -v "$PWD":/work -w /work tdma-emane ./emane/run_demo.sh
+```
+`emane/run_demo.sh` builds a bridge + 16 network namespaces (one radio each), starts 16 EMANE TDMA
+instances, loads the pathloss scenario, sends the Brain's schedule with `emaneevent-tdmaschedule`,
+then runs ping and a two-sender UDP test against Node_02. It repeats with `schedule_bad.xml`
+(Node_03 forced into Node_01's slot = hidden terminal) as a negative control.
+Output and evidence land in `docs/emane-evidence/`.
 
-**Status:** (fill in honestly after you try it: what you installed, what ran, what you observed.)
+**Status (executed):** run on EMANE 1.5.3 (Ubuntu 24.04 container on a WSL2 host), 16 NEMs, one network namespace each, TDMA radio model, 1 ms slots, 9-slot frame from the Brain. Results:
+* Every NEM checked (1, 2, 3, 16) accepted the schedule (`scheduler.scheduleAcceptFull` incremented, zero rejects).
+* The pathloss scenario enforced the 500 m model: Node_01 to Node_02 (300 m) reachable, Node_01 to Node_16 (1273 m) 100% loss in every run.
+* Negative control (final run): UDP from Node_01 and Node_03 (hidden terminals around Node_02) lost 6-14% with the Brain's schedule and 30% when Node_03 was forced into Node_01's slot (the Node_03 flow did not complete in that case).
+* Limitations: one laptop, 1 ms slots, a few runs; timing noise gives a loss floor, so this shows the schedule is consistent with collision avoidance, not a quantitative benchmark. Ping loss is too noisy to use. Raw tables are in `docs/emane-evidence/`.
 
 ## Layout
-`tdma_brain.py` Brain/CLI | `emane_bridge.py` EMANE glue | `tests/` | `benchmark_random.py` | `Dockerfile`
+`tdma_brain.py` Brain/CLI | `emane_bridge.py` EMANE glue | `emane/` Part 2 lab (Dockerfile, config generator, demo runner) | `tests/` | `benchmark_random.py` | `Dockerfile`

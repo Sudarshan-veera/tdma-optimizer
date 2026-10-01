@@ -1,0 +1,6 @@
+01 -> 02 (300 m, in range):
+5 packets transmitted, 2 received, 60% packet loss, time 4050ms
+rtt min/avg/max/mdev = 12.411/13.573/14.735/1.162 ms
+01 -> 16 (1273 m, out of range, expect 100% loss):
+5 packets transmitted, 0 received, +3 errors, 100% packet loss, time 4097ms
+pipe 4

@@ -38,12 +38,16 @@ def make_schedule_xml(data, slot_us=1000, overhead_us=0, freq="2.4G", rate="1M",
 
 
 def make_eel(data, in_range_db=80, out_range_db=200):
+    """One EEL line per source NEM: `0.0 nem:A pathloss nem:B,dB nem:C,dB ...`."""
     c, r = data["coords"], data["range"]
     names = sorted(c, key=nem_id)
-    return "".join(
-        f"0.0 nem:{nem_id(a)} pathloss nem:{nem_id(b)},"
-        f"{in_range_db if math.dist(c[a], c[b]) <= r else out_range_db}\n"
-        for a in names for b in names if a != b)
+    lines = []
+    for a in names:
+        pairs = " ".join(
+            f"nem:{nem_id(b)},{in_range_db if math.dist(c[a], c[b]) <= r else out_range_db}"
+            for b in names if b != a)
+        lines.append(f"0.0 nem:{nem_id(a)} pathloss {pairs}")
+    return "\n".join(lines) + "\n"
 
 
 def main(argv=None):
@@ -52,11 +56,12 @@ def main(argv=None):
     p.add_argument("--xml", default="schedule.xml")
     p.add_argument("--eel", default="scenario.eel")
     p.add_argument("--slot-us", type=int, default=1000, help="slot duration in microseconds (1 ms)")
+    p.add_argument("--rate", default="1M", help="per-slot data rate, e.g. 1M or 10M")
     a = p.parse_args(argv)
     with open(a.schedule_json, encoding="utf-8") as fh:
         data = json.load(fh)
     with open(a.xml, "w", encoding="utf-8") as fh:
-        fh.write(make_schedule_xml(data, slot_us=a.slot_us))
+        fh.write(make_schedule_xml(data, slot_us=a.slot_us, rate=a.rate))
     with open(a.eel, "w", encoding="utf-8") as fh:
         fh.write(make_eel(data))
     print(f"Wrote {a.xml} and {a.eel}")
