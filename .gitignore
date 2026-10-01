@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.png
+schedule.json
+schedule.xml
+scenario.eel
