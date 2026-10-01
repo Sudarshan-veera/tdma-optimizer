@@ -1,0 +1,4 @@
+nem 1   mac TxSlotStatusTable
+| Index | Frame | Slot | Valid | Missed | Big | .25  | .50  | .75 | 1.0 | 1.25 | 1.50 | 1.75 | >1.75 |
+| 8     | 0     | 8    | 5950  | 19     | 0   | 3633 | 2084 | 192 | 41  | 8    | 4    | 2    | 5     |
+
