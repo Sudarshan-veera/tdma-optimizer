@@ -1,7 +1,16 @@
 .venv/
 __pycache__/
 .pytest_cache/
-*.png
+*.pyc
 schedule.json
 schedule.xml
 scenario.eel
+schedule.png
+*.egg-info/
+dist/
+build/
+.DS_Store
+*:Zone.Identifier
+*.zip
+sim/out/
+sim/vaanmegam/
