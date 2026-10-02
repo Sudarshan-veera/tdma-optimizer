@@ -1,0 +1,7 @@
+scenario,slots_per_frame,attempted_per_frame,delivered_per_frame,collisions_per_frame,hidden_terminal_per_frame,direct_per_frame,half_duplex_per_frame,delivery_ratio,delivered_per_second
+"MATLAB schedule (distance-2 colouring)",9,84.0000,84.0000,0.0000,0.0000,0.0000,0.0000,1.000000,9333.33
+"Python Brain schedule (from CSV)",9,84.0000,84.0000,0.0000,0.0000,0.0000,0.0000,1.000000,9333.33
+"Bad: Node_03 in Node_01's slot",9,84.0000,74.0000,8.0000,4.0000,4.0000,2.0000,0.880952,8222.22
+"Token passing (1 node per slot)",16,84.0000,84.0000,0.0000,0.0000,0.0000,0.0000,1.000000,5250.00
+"All nodes in one slot",1,84.0000,0.0000,0.0000,0.0000,0.0000,84.0000,0.000000,0.00
+"Random schedule (mean of 200)",9,84.0000,42.7350,31.8950,15.9550,15.9400,9.3700,0.508750,4748.33
