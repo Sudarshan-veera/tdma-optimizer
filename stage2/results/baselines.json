@@ -1,0 +1,184 @@
+{
+  "N": 20,
+  "seeds": 5,
+  "slots_simulated": 8000,
+  "static": [
+    {
+      "seed": 0,
+      "F": 28,
+      "lower_bound": 28,
+      "random_collision_pct": 72.72727272727273,
+      "greedy_collision_pct": 0.0
+    },
+    {
+      "seed": 1,
+      "F": 28,
+      "lower_bound": 28,
+      "random_collision_pct": 72.72727272727273,
+      "greedy_collision_pct": 0.0
+    },
+    {
+      "seed": 2,
+      "F": 29,
+      "lower_bound": 29,
+      "random_collision_pct": 46.15384615384615,
+      "greedy_collision_pct": 0.0
+    },
+    {
+      "seed": 3,
+      "F": 30,
+      "lower_bound": 30,
+      "random_collision_pct": 67.44186046511628,
+      "greedy_collision_pct": 0.0
+    },
+    {
+      "seed": 4,
+      "F": 28,
+      "lower_bound": 28,
+      "random_collision_pct": 70.45454545454545,
+      "greedy_collision_pct": 0.0
+    }
+  ],
+  "summary": {
+    "tdma": {
+      "0.004": {
+        "throughput": 0.0752,
+        "delivery_ratio": 0.993724970465264,
+        "mean_latency": 34.08931395697904,
+        "collision_rate": 0.0,
+        "tx_per_delivery": 2.246901024464643
+      },
+      "0.008": {
+        "throughput": 0.14815,
+        "delivery_ratio": 0.9957851820234002,
+        "mean_latency": 35.52689716168983,
+        "collision_rate": 0.0,
+        "tx_per_delivery": 2.2554978128848964
+      },
+      "0.012": {
+        "throughput": 0.22422499999999998,
+        "delivery_ratio": 0.9947690998054105,
+        "mean_latency": 37.433559826694776,
+        "collision_rate": 0.0,
+        "tx_per_delivery": 2.2641854232179677
+      },
+      "0.016": {
+        "throughput": 0.302325,
+        "delivery_ratio": 0.994553806707495,
+        "mean_latency": 41.32232122061801,
+        "collision_rate": 0.0,
+        "tx_per_delivery": 2.2477723349221597
+      },
+      "0.02": {
+        "throughput": 0.3799,
+        "delivery_ratio": 0.9952254792271044,
+        "mean_latency": 47.018991072160034,
+        "collision_rate": 0.0,
+        "tx_per_delivery": 2.2470554104902876
+      },
+      "0.03": {
+        "throughput": 0.5611999999999999,
+        "delivery_ratio": 0.9862726408870272,
+        "mean_latency": 91.2537408976855,
+        "collision_rate": 0.0,
+        "tx_per_delivery": 2.2547899245133056
+      }
+    },
+    "aloha": {
+      "0.004": {
+        "throughput": 0.07797499999999999,
+        "delivery_ratio": 0.9964968810710261,
+        "mean_latency": 25.862034611294156,
+        "collision_rate": 0.11184432699842435,
+        "tx_per_delivery": 2.5610255327275064
+      },
+      "0.008": {
+        "throughput": 0.15172499999999997,
+        "delivery_ratio": 0.99579115997388,
+        "mean_latency": 35.50819399454615,
+        "collision_rate": 0.2447419668692421,
+        "tx_per_delivery": 3.0080651743455133
+      },
+      "0.012": {
+        "throughput": 0.21654999999999996,
+        "delivery_ratio": 0.9595383421439385,
+        "mean_latency": 157.3683733508427,
+        "collision_rate": 0.4446043925633928,
+        "tx_per_delivery": 4.431265841804394
+      },
+      "0.016": {
+        "throughput": 0.2177,
+        "delivery_ratio": 0.7211267218352692,
+        "mean_latency": 867.167948020053,
+        "collision_rate": 0.5192457799231345,
+        "tx_per_delivery": 5.733323913499318
+      },
+      "0.02": {
+        "throughput": 0.20022500000000001,
+        "delivery_ratio": 0.5254075519970506,
+        "mean_latency": 1375.103205993845,
+        "collision_rate": 0.5372293799006733,
+        "tx_per_delivery": 7.218151337376852
+      },
+      "0.03": {
+        "throughput": 0.1705,
+        "delivery_ratio": 0.300174606593277,
+        "mean_latency": 2014.2170049837946,
+        "collision_rate": 0.513244894901095,
+        "tx_per_delivery": 9.138657022965358
+      }
+    },
+    "csma": {
+      "0.004": {
+        "throughput": 0.07497499999999999,
+        "delivery_ratio": 0.997970254686545,
+        "mean_latency": 19.968020898008284,
+        "collision_rate": 0.10062604056877493,
+        "tx_per_delivery": 2.505933360454561
+      },
+      "0.008": {
+        "throughput": 0.15034999999999998,
+        "delivery_ratio": 0.9803147643568947,
+        "mean_latency": 132.0066172312701,
+        "collision_rate": 0.2548658100326675,
+        "tx_per_delivery": 3.049775108119855
+      },
+      "0.012": {
+        "throughput": 0.155525,
+        "delivery_ratio": 0.6805593099172549,
+        "mean_latency": 1092.790700346812,
+        "collision_rate": 0.3161806419431361,
+        "tx_per_delivery": 4.156514475462066
+      },
+      "0.016": {
+        "throughput": 0.14654999999999999,
+        "delivery_ratio": 0.48599261725777865,
+        "mean_latency": 1638.9921012861269,
+        "collision_rate": 0.34468900786127143,
+        "tx_per_delivery": 5.320133748205671
+      },
+      "0.02": {
+        "throughput": 0.12945,
+        "delivery_ratio": 0.3359583049567849,
+        "mean_latency": 2196.141312969442,
+        "collision_rate": 0.35897266140234657,
+        "tx_per_delivery": 6.951187394447389
+      },
+      "0.03": {
+        "throughput": 0.12745,
+        "delivery_ratio": 0.2209082396295416,
+        "mean_latency": 2486.532824632909,
+        "collision_rate": 0.37983214517423197,
+        "tx_per_delivery": 8.522340868710586
+      }
+    }
+  },
+  "loads": [
+    0.004,
+    0.008,
+    0.012,
+    0.016,
+    0.02,
+    0.03
+  ]
+}
