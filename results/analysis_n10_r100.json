@@ -1,0 +1,382 @@
+{
+  "inputs": {
+    "n": 10,
+    "range_m": 100.0,
+    "users": 0,
+    "distance_m": 0.0
+  },
+  "packets_per_frame": 9,
+  "ranking": [
+    {
+      "topology": "spider, 2 arms",
+      "F_conv": 12,
+      "LB": 12,
+      "reach_m": 450.0,
+      "reach_Rc": 4.5,
+      "hops": 5,
+      "latency_slots": 60,
+      "colours": 3,
+      "max_degree": 2,
+      "diameter": 9,
+      "efficiency_m_per_slot": 37.5,
+      "pareto": true
+    },
+    {
+      "topology": "chain (path graph)",
+      "F_conv": 24,
+      "LB": 24,
+      "reach_m": 810.0,
+      "reach_Rc": 8.1,
+      "hops": 9,
+      "latency_slots": 216,
+      "colours": 3,
+      "max_degree": 2,
+      "diameter": 9,
+      "efficiency_m_per_slot": 33.75,
+      "pareto": true
+    },
+    {
+      "topology": "spider, 3 arms",
+      "F_conv": 9,
+      "LB": 9,
+      "reach_m": 270.0,
+      "reach_Rc": 2.7,
+      "hops": 3,
+      "latency_slots": 27,
+      "colours": 3,
+      "max_degree": 3,
+      "diameter": 6,
+      "efficiency_m_per_slot": 30.0,
+      "pareto": true
+    },
+    {
+      "topology": "spider, 4 arms",
+      "F_conv": 9,
+      "LB": 9,
+      "reach_m": 270.0,
+      "reach_Rc": 2.7,
+      "hops": 3,
+      "latency_slots": 27,
+      "colours": 4,
+      "max_degree": 4,
+      "diameter": 5,
+      "efficiency_m_per_slot": 30.0,
+      "pareto": true
+    },
+    {
+      "topology": "ring (cycle graph)",
+      "F_conv": 12,
+      "LB": 12,
+      "reach_m": 291.2461179749811,
+      "reach_Rc": 2.9124611797498106,
+      "hops": 5,
+      "latency_slots": 60,
+      "colours": 3,
+      "max_degree": 2,
+      "diameter": 5,
+      "efficiency_m_per_slot": 24.27050983124842,
+      "pareto": false
+    },
+    {
+      "topology": "comb",
+      "F_conv": 20,
+      "LB": 20,
+      "reach_m": 450.0,
+      "reach_Rc": 4.5,
+      "hops": 5,
+      "latency_slots": 100,
+      "colours": 5,
+      "max_degree": 3,
+      "diameter": 6,
+      "efficiency_m_per_slot": 22.5,
+      "pareto": false
+    },
+    {
+      "topology": "spider, 5 arms",
+      "F_conv": 9,
+      "LB": 9,
+      "reach_m": 180.00000000000003,
+      "reach_Rc": 1.8000000000000003,
+      "hops": 2,
+      "latency_slots": 18,
+      "colours": 5,
+      "max_degree": 5,
+      "diameter": 4,
+      "efficiency_m_per_slot": 20.000000000000004,
+      "pareto": false
+    },
+    {
+      "topology": "spider, 6 arms",
+      "F_conv": 9,
+      "LB": 9,
+      "reach_m": 180.0,
+      "reach_Rc": 1.8,
+      "hops": 2,
+      "latency_slots": 18,
+      "colours": 6,
+      "max_degree": 6,
+      "diameter": 4,
+      "efficiency_m_per_slot": 20.0,
+      "pareto": false
+    },
+    {
+      "topology": "spider, 7 arms",
+      "F_conv": 9,
+      "LB": 9,
+      "reach_m": 180.0,
+      "reach_Rc": 1.8,
+      "hops": 2,
+      "latency_slots": 18,
+      "colours": 7,
+      "max_degree": 7,
+      "diameter": 3,
+      "efficiency_m_per_slot": 20.0,
+      "pareto": false
+    },
+    {
+      "topology": "spider, 8 arms",
+      "F_conv": 9,
+      "LB": 9,
+      "reach_m": 180.0,
+      "reach_Rc": 1.8,
+      "hops": 2,
+      "latency_slots": 18,
+      "colours": 8,
+      "max_degree": 8,
+      "diameter": 3,
+      "efficiency_m_per_slot": 20.0,
+      "pareto": false
+    },
+    {
+      "topology": "grid (2:1 rows:cols)",
+      "F_conv": 20,
+      "LB": 20,
+      "reach_m": 371.07950630558946,
+      "reach_Rc": 3.710795063055895,
+      "hops": 5,
+      "latency_slots": 100,
+      "colours": 5,
+      "max_degree": 3,
+      "diameter": 5,
+      "efficiency_m_per_slot": 18.553975315279473,
+      "pareto": false
+    },
+    {
+      "topology": "ladder (2 rows)",
+      "F_conv": 20,
+      "LB": 20,
+      "reach_m": 371.07950630558946,
+      "reach_Rc": 3.710795063055895,
+      "hops": 5,
+      "latency_slots": 100,
+      "colours": 5,
+      "max_degree": 3,
+      "diameter": 5,
+      "efficiency_m_per_slot": 18.553975315279473,
+      "pareto": false
+    },
+    {
+      "topology": "binary tree",
+      "F_conv": 16,
+      "LB": 16,
+      "reach_m": 241.37871572725393,
+      "reach_Rc": 2.413787157272539,
+      "hops": 3,
+      "latency_slots": 48,
+      "colours": 6,
+      "max_degree": 3,
+      "diameter": 5,
+      "efficiency_m_per_slot": 15.08616973295337,
+      "pareto": false
+    },
+    {
+      "topology": "3 hubs + leaves",
+      "F_conv": 11,
+      "LB": 11,
+      "reach_m": 147.3091986265624,
+      "reach_Rc": 1.473091986265624,
+      "hops": 2,
+      "latency_slots": 22,
+      "colours": 5,
+      "max_degree": 3,
+      "diameter": 4,
+      "efficiency_m_per_slot": 13.39174532968749,
+      "pareto": false
+    },
+    {
+      "topology": "random geometric (best of 40)",
+      "F_conv": 10,
+      "LB": 10,
+      "reach_m": 132.46025672059633,
+      "reach_Rc": 1.3246025672059634,
+      "hops": 2,
+      "latency_slots": 20,
+      "colours": 9,
+      "max_degree": 8,
+      "diameter": 3,
+      "efficiency_m_per_slot": 13.246025672059634,
+      "pareto": false
+    },
+    {
+      "topology": "random geometric (median)",
+      "F_conv": 13,
+      "LB": 13,
+      "reach_m": 170.21260630802175,
+      "reach_Rc": 1.7021260630802175,
+      "hops": 3,
+      "latency_slots": 39,
+      "colours": 7,
+      "max_degree": 4,
+      "diameter": 5,
+      "efficiency_m_per_slot": 13.093277408309365,
+      "pareto": false
+    },
+    {
+      "topology": "ternary tree",
+      "F_conv": 15,
+      "LB": 15,
+      "reach_m": 170.0,
+      "reach_Rc": 1.7,
+      "hops": 2,
+      "latency_slots": 30,
+      "colours": 9,
+      "max_degree": 7,
+      "diameter": 3,
+      "efficiency_m_per_slot": 11.333333333333334,
+      "pareto": false
+    },
+    {
+      "topology": "star",
+      "F_conv": 9,
+      "LB": 9,
+      "reach_m": 90.0,
+      "reach_Rc": 0.9,
+      "hops": 1,
+      "latency_slots": 9,
+      "colours": 9,
+      "max_degree": 9,
+      "diameter": 2,
+      "efficiency_m_per_slot": 10.0,
+      "pareto": false
+    }
+  ],
+  "excluded": [],
+  "winners": {
+    "highest throughput (shortest frame)": "star",
+    "lowest latency (hops x frame)": "star",
+    "longest reach": "chain (path graph)",
+    "best balance (metres of reach per slot)": "spider, 2 arms"
+  },
+  "sensitivity": {
+    "5": {
+      "highest throughput (shortest frame)": [
+        "star",
+        4,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        4,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        9,
+        360
+      ],
+      "best balance (metres of reach per slot)": [
+        "spider, 2 arms",
+        4,
+        180
+      ]
+    },
+    "8": {
+      "highest throughput (shortest frame)": [
+        "star",
+        7,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        7,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        18,
+        630
+      ],
+      "best balance (metres of reach per slot)": [
+        "spider, 2 arms",
+        9,
+        360
+      ]
+    },
+    "10": {
+      "highest throughput (shortest frame)": [
+        "star",
+        9,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        9,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        24,
+        810
+      ],
+      "best balance (metres of reach per slot)": [
+        "spider, 2 arms",
+        12,
+        450
+      ]
+    },
+    "15": {
+      "highest throughput (shortest frame)": [
+        "star",
+        14,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        14,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        39,
+        1260
+      ],
+      "best balance (metres of reach per slot)": [
+        "spider, 2 arms",
+        18,
+        630
+      ]
+    },
+    "20": {
+      "highest throughput (shortest frame)": [
+        "star",
+        19,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        19,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        54,
+        1710
+      ],
+      "best balance (metres of reach per slot)": [
+        "spider, 2 arms",
+        27,
+        900
+      ]
+    }
+  }
+}

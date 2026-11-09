@@ -1,0 +1,308 @@
+{
+  "inputs": {
+    "radios": 18,
+    "range_m": 100.0,
+    "users": 40,
+    "distance_m": 800.0
+  },
+  "packets_per_frame": 57,
+  "patterns": [
+    {
+      "pattern": "chain (path graph)",
+      "coverage_m": 1530.0,
+      "F_conv": 158,
+      "LB": 158,
+      "F_unit": 3,
+      "coverage_Rc": 15.3,
+      "max_hops": 17,
+      "diameter": 17,
+      "max_degree": 2,
+      "comm_edges": 17,
+      "conflict_edges": 31,
+      "clique_LB_unit": 3
+    },
+    {
+      "pattern": "star",
+      "coverage_m": 90.00000000000001,
+      "F_conv": 57,
+      "LB": 57,
+      "F_unit": 17,
+      "coverage_Rc": 0.9000000000000001,
+      "max_hops": 1,
+      "diameter": 2,
+      "max_degree": 17,
+      "comm_edges": 68,
+      "conflict_edges": 136,
+      "clique_LB_unit": 17
+    },
+    {
+      "pattern": "grid (2:1 rows:cols)",
+      "coverage_m": 484.66483264210535,
+      "F_conv": 139,
+      "LB": 139,
+      "F_unit": 6,
+      "coverage_Rc": 4.846648326421054,
+      "max_hops": 7,
+      "diameter": 7,
+      "max_degree": 4,
+      "comm_edges": 27,
+      "conflict_edges": 65,
+      "clique_LB_unit": 6
+    },
+    {
+      "pattern": "ring (cycle graph)",
+      "coverage_m": 518.289343482927,
+      "F_conv": 89,
+      "LB": 89,
+      "F_unit": 3,
+      "coverage_Rc": 5.18289343482927,
+      "max_hops": 9,
+      "diameter": 9,
+      "max_degree": 2,
+      "comm_edges": 18,
+      "conflict_edges": 29,
+      "clique_LB_unit": 3
+    },
+    {
+      "pattern": "spider, 3 arms",
+      "coverage_m": 540.0,
+      "F_conv": 57,
+      "LB": 57,
+      "F_unit": 3,
+      "coverage_Rc": 5.4,
+      "max_hops": 6,
+      "diameter": 12,
+      "max_degree": 3,
+      "comm_edges": 17,
+      "conflict_edges": 28,
+      "clique_LB_unit": 3
+    },
+    {
+      "pattern": "spider, 6 arms",
+      "coverage_m": 270.0,
+      "F_conv": 57,
+      "LB": 57,
+      "F_unit": 6,
+      "coverage_Rc": 2.7,
+      "max_hops": 3,
+      "diameter": 6,
+      "max_degree": 6,
+      "comm_edges": 23,
+      "conflict_edges": 43,
+      "clique_LB_unit": 6
+    },
+    {
+      "pattern": "binary tree",
+      "coverage_m": 319.49549106720883,
+      "F_conv": 109,
+      "LB": 109,
+      "F_unit": 8,
+      "coverage_Rc": 3.1949549106720885,
+      "max_hops": 4,
+      "diameter": 7,
+      "max_degree": 4,
+      "comm_edges": 20,
+      "conflict_edges": 73,
+      "clique_LB_unit": 8
+    },
+    {
+      "pattern": "3 hubs + leaves",
+      "coverage_m": 170.0,
+      "F_conv": 66,
+      "LB": 66,
+      "F_unit": 6,
+      "coverage_Rc": 1.7,
+      "max_hops": 2,
+      "diameter": 4,
+      "max_degree": 6,
+      "comm_edges": 36,
+      "conflict_edges": 53,
+      "clique_LB_unit": 6
+    }
+  ],
+  "spider_family": [
+    {
+      "arms": 1,
+      "F_conv": 158,
+      "coverage_m": 1530.0,
+      "max_hops": 17,
+      "reaches_target": true
+    },
+    {
+      "arms": 2,
+      "F_conv": 89,
+      "coverage_m": 810.0,
+      "max_hops": 9,
+      "reaches_target": true
+    },
+    {
+      "arms": 3,
+      "F_conv": 57,
+      "coverage_m": 540.0,
+      "max_hops": 6,
+      "reaches_target": false
+    },
+    {
+      "arms": 4,
+      "F_conv": 60,
+      "coverage_m": 450.0,
+      "max_hops": 5,
+      "reaches_target": false
+    },
+    {
+      "arms": 5,
+      "F_conv": 57,
+      "coverage_m": 360.0,
+      "max_hops": 4,
+      "reaches_target": false
+    },
+    {
+      "arms": 6,
+      "F_conv": 57,
+      "coverage_m": 270.0,
+      "max_hops": 3,
+      "reaches_target": false
+    },
+    {
+      "arms": 7,
+      "F_conv": 62,
+      "coverage_m": 270.0,
+      "max_hops": 3,
+      "reaches_target": false
+    },
+    {
+      "arms": 8,
+      "F_conv": 57,
+      "coverage_m": 270.0,
+      "max_hops": 3,
+      "reaches_target": false
+    }
+  ],
+  "best": {
+    "F_conv": 83,
+    "coverage_m": 832.7568922497869,
+    "max_hops": 9,
+    "positions_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        80.5,
+        -37.5
+      ],
+      [
+        173.3,
+        -21.4
+      ],
+      [
+        269.6,
+        -34.8
+      ],
+      [
+        366.3,
+        -41.9
+      ],
+      [
+        452.8,
+        -20.0
+      ],
+      [
+        547.9,
+        -18.0
+      ],
+      [
+        640.9,
+        9.6
+      ],
+      [
+        736.2,
+        -17.3
+      ],
+      [
+        -64.1,
+        -57.2
+      ],
+      [
+        -81.1,
+        -12.7
+      ],
+      [
+        -178.6,
+        -0.9
+      ],
+      [
+        -273.6,
+        -12.5
+      ],
+      [
+        -360.0,
+        0.0
+      ],
+      [
+        -443.2,
+        -11.1
+      ],
+      [
+        -528.0,
+        -39.2
+      ],
+      [
+        831.6,
+        -43.5
+      ],
+      [
+        -567.6,
+        -21.1
+      ]
+    ],
+    "parent": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      0,
+      0,
+      10,
+      11,
+      12,
+      13,
+      14,
+      8,
+      15
+    ],
+    "best_single_move": null
+  },
+  "best_by_frame_budget": {
+    "57": {
+      "F_conv": 57,
+      "coverage_m": 552.7718484243261,
+      "max_hops": 7
+    },
+    "72": {
+      "F_conv": 71,
+      "coverage_m": 637.1873880125231,
+      "max_hops": 7
+    },
+    "92": {
+      "F_conv": 80,
+      "coverage_m": 559.0733221798606,
+      "max_hops": 8
+    },
+    "114": {
+      "F_conv": 111,
+      "coverage_m": 639.4844972802575,
+      "max_hops": 9
+    },
+    "171": {
+      "F_conv": 158,
+      "coverage_m": 1530.0,
+      "max_hops": 17
+    }
+  }
+}
