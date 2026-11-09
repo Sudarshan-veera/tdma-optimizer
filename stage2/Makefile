@@ -27,3 +27,10 @@ clean:
 
 analyze:
 	$(PY) -m tdmaopt.analyze --n $(N) --range $(R) $(ARGS)
+
+optimize:
+	$(PY) -m tdmaopt.hetero $(ARGS)
+
+paper:
+	python -m tdmaopt.paper --heavy
+	cd paper && pdflatex main && pdflatex main

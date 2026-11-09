@@ -75,3 +75,18 @@ See `docs/RESULTS.md` (generated) and the plots in `results/`.
 
 Inputs: `--n` radios, `--range` metres, `--distance` required reach, `--users` attached users.
 Outputs in `results/`: `analysis_n*_r*.md/.json/.png/_best.png`.
+
+## Radios with different ranges (the optimizer)
+
+    python3 -m tdmaopt.hetero                       # asks: total number of radios, then the effective coverage (metres)
+    python3 -m tdmaopt.hetero --n 85 --coverage 800 # 85 radios, 800 m each (one value = all radios; or one value per radio)
+    python3 -m tdmaopt.hetero --coverage 500,300,300,200 --distance 900   # optional: required distance from your radio
+
+You give the number of radios and their effective coverage. The program builds every topology (chain, ring, spiders,
+trees, comb, plus a free-form searched layout), rejects those that break the spacing rule, and sorts the rest for the best case.
+Model settings (`--min-sep 0.5 --link-margin 0.9 --interference 1.5`) are printed in the report and can be changed.
+Outputs: `results/opt_n*.md/.json/_layout.csv/_best.png/_compare.png`.
+
+## Paper (theory + reproducible results)
+`make paper` regenerates every figure/table in `results/paper/` and compiles `paper/main.tex`
+(IEEEtran is used automatically if installed; otherwise an article-class fallback).

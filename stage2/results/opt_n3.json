@@ -1,0 +1,80 @@
+{
+  "inputs": {
+    "ranges_m": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "distance_m": 5000.0,
+    "min_sep": 0.5,
+    "link_margin": 0.9,
+    "interference": 1.5
+  },
+  "best": "chain (path graph)",
+  "frame": 3,
+  "area_m2": 66875.0,
+  "reach_m": 180.0,
+  "layout": [
+    {
+      "radio": 0,
+      "range_m": 100.0,
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "parent": -1,
+      "link_m": null,
+      "hops": 0,
+      "tx_slots": []
+    },
+    {
+      "radio": 1,
+      "range_m": 100.0,
+      "x_m": 90.0,
+      "y_m": 0.0,
+      "parent": 0,
+      "link_m": 90.0,
+      "hops": 1,
+      "tx_slots": [
+        0,
+        1
+      ]
+    },
+    {
+      "radio": 2,
+      "range_m": 100.0,
+      "x_m": 180.0,
+      "y_m": 0.0,
+      "parent": 1,
+      "link_m": 90.0,
+      "hops": 2,
+      "tx_slots": [
+        2
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "topology": "chain (path graph)",
+      "frame": 3,
+      "area_m2": 66875.0,
+      "reach_m": 180.0
+    },
+    {
+      "topology": "star",
+      "frame": 2,
+      "area_m2": 66875.0,
+      "reach_m": 90.0
+    },
+    {
+      "topology": "binary tree",
+      "frame": 2,
+      "area_m2": 66875.0,
+      "reach_m": 90.0
+    },
+    {
+      "topology": "ternary tree",
+      "frame": 2,
+      "area_m2": 66250.0,
+      "reach_m": 90.0
+    }
+  ]
+}

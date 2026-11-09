@@ -2,7 +2,7 @@
 import numpy as np
 
 from .phy import PHY, Channel, max_range
-from .schedule import (conflict_graph, frame_length, greedy_schedule, subtree_loads, unit_demand)
+from .schedule import (conflict_graph, frame_length, best_schedule, subtree_loads, unit_demand)
 from .topology import build_tree, chain
 
 
@@ -13,8 +13,8 @@ def chain_point(phy: PHY, n_nodes: int, margin: float = 0.9):
     parent, _ = build_tree(chan)
     assert (parent != -2).all(), "chain is disconnected: margin must be < 1"
     adj = conflict_graph(chan, parent)
-    _, F_unit = greedy_schedule(adj, unit_demand(parent))
-    _, F_conv = greedy_schedule(adj, subtree_loads(parent))
+    _, F_unit = best_schedule(adj, unit_demand(parent))
+    _, F_conv = best_schedule(adj, subtree_loads(parent))
     return {"nodes": n_nodes, "hops": n_nodes - 1, "distance_m": (n_nodes - 1) * spacing,
             "F_unit": F_unit, "F_conv": F_conv}
 

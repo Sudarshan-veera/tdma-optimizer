@@ -4,6 +4,7 @@ import pytest
 from tdmaopt import *
 from tdmaopt.coverage import chain_point, max_coverage_distance
 from tdmaopt.dynamic import DynamicNet
+from tdmaopt.phy import phy_for_range
 
 
 def net(n, seed, model="disk", sigma=0.0):
@@ -138,3 +139,58 @@ def test_analyze_smoke():
                        capture_output=True, text=True)
     assert r.returncode == 0, r.stderr
     assert "Ranking" in r.stdout
+
+
+def test_hetero_smoke():
+    import subprocess, sys
+    r = subprocess.run([sys.executable, "-m", "tdmaopt.hetero", "--ranges", "500,300,300,200,100", "--distance", "600", "--min-sep", "0.5",
+                        "--link-margin", "0.9", "--interference", "1.5", "--tries", "3", "--steps", "50"],
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    assert "Chosen arrangement:" in r.stdout
+
+
+def test_hetero_needs_inputs_and_flags_infeasible():
+    import subprocess, sys
+    r = subprocess.run([sys.executable, "-m", "tdmaopt.hetero"], input="", capture_output=True, text=True)
+    assert r.returncode != 0 and "No value given" in (r.stderr + r.stdout)      # never assumes a value
+    r = subprocess.run([sys.executable, "-m", "tdmaopt.hetero", "--ranges", "100,100,100", "--distance", "5000",
+                        "--min-sep", "0.5", "--link-margin", "0.9", "--interference", "1.5", "--steps", "0"],
+                       capture_output=True, text=True)
+    assert r.returncode == 0 and "cannot be reached" in r.stdout
+
+
+# ---- theory ------------------------------------------------------------------------------------------------------
+def _sched(pos, rho, mu, R=100.0):
+    from tdmaopt.schedule import best_schedule, greedy_schedule, conflict_graph, subtree_loads
+    from tdmaopt.topology import build_tree
+    ch = Channel(pos, phy_for_range(mu * R * 1.0001, PHY(ri_factor=rho / mu)), model="disk")
+    par, _ = build_tree(ch)
+    adj, d = conflict_graph(ch, par), subtree_loads(par)
+    return greedy_schedule(adj, d)[1], best_schedule(adj, d)[1]
+
+
+@pytest.mark.parametrize("rho", [1.0, 1.5, 2.2])
+@pytest.mark.parametrize("N", [5, 12, 25])
+def test_chain_closed_form(rho, N):
+    from tdmaopt import theory as T
+    pos = np.array([[i * 90.0, 0.0] for i in range(N)])
+    assert _sched(pos, rho, 0.9)[1] == T.chain_frame(N, rho, 0.9)
+
+
+@pytest.mark.parametrize("N,D", [(18, 1000), (30, 1500), (60, 700)])
+def test_spider_meets_lower_bound(N, D):
+    import math
+    from tdmaopt import theory as T
+    l = math.ceil(D / 90.0 - 1e-12)
+    pos = T.spider_positions(T.spider_arms(N, l), 90.0)
+    assert _sched(pos, 1.5, 0.9)[1] == T.frame_lower_bound(N, D, 100.0, 0.9, 1.5)
+
+
+def test_best_never_worse_than_greedy():
+    for seed in range(5):
+        _, chan, parent, _ = net(30, seed)
+        from tdmaopt.schedule import best_schedule, greedy_schedule, subtree_loads
+        adj = conflict_graph(chan, parent)
+        d = subtree_loads(parent)
+        assert best_schedule(adj, d)[1] <= greedy_schedule(adj, d)[1]
