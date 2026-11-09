@@ -104,3 +104,12 @@ Binary 500 m disk model (no SINR, fading or capture); static nodes; one transmit
 ## License
 
 MIT, see `LICENSE`.
+
+## Stage 2: N-radio optimizer (`stage2/`)
+Extends the 4x4 planner to N radios with different ranges. You give the radio count and coverage; it ranks chain, ring, spider, tree and free-form layouts.
+```bash
+cd stage2 && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+python3 -m tdmaopt.hetero --n 85 --coverage 800
+python3 -m pytest -q tests          # Stage 2 tests
+python3 -m tdmaopt.paper --heavy    # reproduces the theory and scaling results
+```

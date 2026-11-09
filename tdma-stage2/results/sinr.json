@@ -1,0 +1,29 @@
+[
+  {
+    "sigma_db": 0.0,
+    "fail_before_pct": 7.752520466666116,
+    "F_before": 61.916666666666664,
+    "F_after": 63.583333333333336,
+    "iters": 5.583333333333333,
+    "fail_after": 0.0,
+    "max_fail_after": 0
+  },
+  {
+    "sigma_db": 4.0,
+    "fail_before_pct": 8.545862408995974,
+    "F_before": 39.166666666666664,
+    "F_after": 41.333333333333336,
+    "iters": 4.333333333333333,
+    "fail_after": 0.0,
+    "max_fail_after": 0
+  },
+  {
+    "sigma_db": 8.0,
+    "fail_before_pct": 8.291584279088204,
+    "F_before": 30.333333333333332,
+    "F_after": 32.083333333333336,
+    "iters": 3.8333333333333335,
+    "fail_after": 0.0,
+    "max_fail_after": 0
+  }
+]

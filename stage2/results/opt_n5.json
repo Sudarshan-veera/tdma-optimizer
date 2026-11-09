@@ -1,0 +1,96 @@
+{
+  "inputs": {
+    "ranges_m": [
+      500.0,
+      300.0,
+      300.0,
+      200.0,
+      100.0
+    ],
+    "distance_m": 600.0,
+    "min_sep": 0.5,
+    "link_margin": 0.9,
+    "interference": 1.5
+  },
+  "best": "chain (path graph)",
+  "frame": 6,
+  "area_m2": 1018125.0,
+  "reach_m": 630.0,
+  "layout": [
+    {
+      "radio": 0,
+      "range_m": 500.0,
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "parent": -1,
+      "link_m": null,
+      "hops": 0,
+      "tx_slots": []
+    },
+    {
+      "radio": 1,
+      "range_m": 300.0,
+      "x_m": 630.0,
+      "y_m": 0.0,
+      "parent": 2,
+      "link_m": 270.0,
+      "hops": 3,
+      "tx_slots": [
+        5
+      ]
+    },
+    {
+      "radio": 2,
+      "range_m": 300.0,
+      "x_m": 360.0,
+      "y_m": 0.0,
+      "parent": 3,
+      "link_m": 180.0,
+      "hops": 2,
+      "tx_slots": [
+        3,
+        4
+      ]
+    },
+    {
+      "radio": 3,
+      "range_m": 200.0,
+      "x_m": 180.0,
+      "y_m": 0.0,
+      "parent": 0,
+      "link_m": 180.0,
+      "hops": 1,
+      "tx_slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "radio": 4,
+      "range_m": 100.0,
+      "x_m": 90.0,
+      "y_m": 0.0,
+      "parent": 0,
+      "link_m": 90.0,
+      "hops": 1,
+      "tx_slots": [
+        5
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "topology": "chain (path graph)",
+      "frame": 6,
+      "area_m2": 1018125.0,
+      "reach_m": 630.0
+    },
+    {
+      "topology": "custom (searched layout)",
+      "frame": 6,
+      "area_m2": 1018125.0,
+      "reach_m": 630.0
+    }
+  ]
+}

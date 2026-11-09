@@ -93,6 +93,47 @@ def lower_bound(adj, demand):
     return best
 
 
+# --------------------------------------------------------------------------- order-aware / chordal-optimal schedule
+def mcs_order(adj, demand, start=None):
+    """Maximum-cardinality-search visiting order. If the conflict graph is chordal, first-fit colouring in this order is
+    optimal even with per-node demand (Tarjan & Yannakakis 1984; perfect-graph argument: a node with demand d is a clique of d copies)."""
+    nodes = list(adj)
+    if not nodes:
+        return []
+    visited, order = set(), []
+    weight = {v: 0 for v in nodes}
+    cur = start if start is not None else max(nodes, key=lambda v: (demand[v], -v))
+    while True:
+        order.append(cur)
+        visited.add(cur)
+        for u in adj[cur]:
+            if u not in visited:
+                weight[u] += 1
+        rest = [v for v in nodes if v not in visited]
+        if not rest:
+            return order
+        cur = max(rest, key=lambda v: (weight[v], demand[v], -v))
+
+
+def best_schedule(adj, demand, starts=6):
+    """Best of several colouring orders: weighted-degree order, MCS orders from the heaviest nodes, smallest-last.
+    Never worse than greedy_schedule; provably optimal when the conflict graph is chordal (e.g. chains and spiders)."""
+    cands = [greedy_schedule(adj, demand)]
+    heavy = sorted(adj, key=lambda v: (-demand[v], v))[:starts]
+    for h in heavy:
+        cands.append(greedy_schedule(adj, demand, order=mcs_order(adj, demand, start=h)))
+    deg = {v: set(adj[v]) for v in adj}
+    sl = []
+    while deg:
+        v = min(deg, key=lambda x: (len(deg[x]), demand[x], x))
+        sl.append(v)
+        for u in deg[v]:
+            deg[u].discard(v)
+        del deg[v]
+    cands.append(greedy_schedule(adj, demand, order=sl[::-1]))
+    return min(cands, key=lambda t: t[1])
+
+
 # --------------------------------------------------------------------------- distributed
 def distributed_schedule(adj, rng, max_rounds=10_000):
     """Round-based randomised slot choice (unit demand). Every pending node picks a random slot
