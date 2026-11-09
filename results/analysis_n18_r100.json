@@ -1,0 +1,202 @@
+{
+  "inputs": {
+    "n": 18,
+    "range_m": 100.0,
+    "users": 40,
+    "distance_m": 800.0
+  },
+  "packets_per_frame": 57,
+  "ranking": [
+    {
+      "topology": "spider, 2 arms",
+      "F_conv": 89,
+      "LB": 89,
+      "reach_m": 810.0,
+      "reach_Rc": 8.1,
+      "hops": 9,
+      "latency_slots": 801,
+      "colours": 3,
+      "max_degree": 2,
+      "diameter": 17,
+      "efficiency_m_per_slot": 9.101123595505618,
+      "pareto": true
+    },
+    {
+      "topology": "search-optimised layout",
+      "F_conv": 89,
+      "LB": 89,
+      "reach_m": 810.0,
+      "reach_Rc": 8.1,
+      "hops": 9,
+      "latency_slots": 801,
+      "colours": 4,
+      "max_degree": 2,
+      "diameter": 17,
+      "efficiency_m_per_slot": 9.101123595505618,
+      "pareto": true
+    },
+    {
+      "topology": "comb",
+      "F_conv": 146,
+      "LB": 146,
+      "reach_m": 810.0,
+      "reach_Rc": 8.1,
+      "hops": 9,
+      "latency_slots": 1314,
+      "colours": 5,
+      "max_degree": 3,
+      "diameter": 10,
+      "efficiency_m_per_slot": 5.5479452054794525,
+      "pareto": false
+    },
+    {
+      "topology": "chain (path graph)",
+      "F_conv": 158,
+      "LB": 158,
+      "reach_m": 1530.0,
+      "reach_Rc": 15.3,
+      "hops": 17,
+      "latency_slots": 2686,
+      "colours": 3,
+      "max_degree": 2,
+      "diameter": 17,
+      "efficiency_m_per_slot": 9.683544303797468,
+      "pareto": true
+    }
+  ],
+  "excluded": [
+    "star",
+    "grid (2:1 rows:cols)",
+    "ring (cycle graph)",
+    "binary tree",
+    "3 hubs + leaves",
+    "spider, 3 arms",
+    "spider, 4 arms",
+    "spider, 5 arms",
+    "spider, 6 arms",
+    "spider, 7 arms",
+    "spider, 8 arms",
+    "ternary tree",
+    "ladder (2 rows)",
+    "random geometric (median)",
+    "random geometric (best of 40)"
+  ],
+  "winners": {
+    "highest throughput (shortest frame)": "spider, 2 arms",
+    "lowest latency (hops x frame)": "spider, 2 arms",
+    "longest reach": "chain (path graph)",
+    "best balance (metres of reach per slot)": "chain (path graph)"
+  },
+  "sensitivity": {
+    "9": {
+      "highest throughput (shortest frame)": [
+        "star",
+        48,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        48,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        122,
+        720
+      ],
+      "best balance (metres of reach per slot)": [
+        "spider, 2 arms",
+        53,
+        360
+      ]
+    },
+    "14": {
+      "highest throughput (shortest frame)": [
+        "star",
+        53,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        53,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        143,
+        1170
+      ],
+      "best balance (metres of reach per slot)": [
+        "spider, 3 arms",
+        53,
+        450
+      ]
+    },
+    "18": {
+      "highest throughput (shortest frame)": [
+        "star",
+        57,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        57,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        158,
+        1530
+      ],
+      "best balance (metres of reach per slot)": [
+        "chain (path graph)",
+        158,
+        1530
+      ]
+    },
+    "27": {
+      "highest throughput (shortest frame)": [
+        "star",
+        66,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        66,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        187,
+        2340
+      ],
+      "best balance (metres of reach per slot)": [
+        "chain (path graph)",
+        187,
+        2340
+      ]
+    },
+    "36": {
+      "highest throughput (shortest frame)": [
+        "star",
+        75,
+        90
+      ],
+      "lowest latency (hops x frame)": [
+        "star",
+        75,
+        90
+      ],
+      "longest reach": [
+        "chain (path graph)",
+        217,
+        3150
+      ],
+      "best balance (metres of reach per slot)": [
+        "chain (path graph)",
+        217,
+        3150
+      ]
+    }
+  }
+}
