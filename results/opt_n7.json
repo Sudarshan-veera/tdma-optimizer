@@ -1,0 +1,125 @@
+{
+  "inputs": {
+    "ranges_m": [
+      500.0,
+      300.0,
+      300.0,
+      200.0,
+      200.0,
+      100.0,
+      100.0
+    ],
+    "distance_m": 800.0,
+    "min_sep": 0.5,
+    "link_margin": 0.9,
+    "interference": 1.5
+  },
+  "best": "custom (searched layout)",
+  "frame": 9,
+  "area_m2": 1117697.8689470806,
+  "reach_m": 806.804832128518,
+  "layout": [
+    {
+      "radio": 0,
+      "range_m": 500.0,
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "parent": -1,
+      "link_m": null,
+      "hops": 0,
+      "tx_slots": []
+    },
+    {
+      "radio": 1,
+      "range_m": 300.0,
+      "x_m": -456.1,
+      "y_m": 665.5,
+      "parent": 2,
+      "link_m": 269.2,
+      "hops": 4,
+      "tx_slots": [
+        0
+      ]
+    },
+    {
+      "radio": 2,
+      "range_m": 300.0,
+      "x_m": -289.8,
+      "y_m": 453.8,
+      "parent": 4,
+      "link_m": 179.8,
+      "hops": 3,
+      "tx_slots": [
+        7,
+        8
+      ]
+    },
+    {
+      "radio": 3,
+      "range_m": 200.0,
+      "x_m": -96.6,
+      "y_m": 150.9,
+      "parent": 0,
+      "link_m": 179.2,
+      "hops": 1,
+      "tx_slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "radio": 4,
+      "range_m": 200.0,
+      "x_m": -194.0,
+      "y_m": 301.6,
+      "parent": 3,
+      "link_m": 179.5,
+      "hops": 2,
+      "tx_slots": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "radio": 5,
+      "range_m": 100.0,
+      "x_m": 49.9,
+      "y_m": -35.0,
+      "parent": 0,
+      "link_m": 61.0,
+      "hops": 1,
+      "tx_slots": [
+        4
+      ]
+    },
+    {
+      "radio": 6,
+      "range_m": 100.0,
+      "x_m": -29.1,
+      "y_m": -77.3,
+      "parent": 0,
+      "link_m": 82.6,
+      "hops": 1,
+      "tx_slots": [
+        5
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "topology": "custom (searched layout)",
+      "frame": 9,
+      "area_m2": 1117697.8689470806,
+      "reach_m": 806.804832128518
+    },
+    {
+      "topology": "chain (path graph)",
+      "frame": 12,
+      "area_m2": 1119130.32,
+      "reach_m": 810.0
+    }
+  ]
+}
