@@ -1,0 +1,103 @@
+================================================================
+ TDMA TOPOLOGY OPTIMIZATION REPORT
+================================================================
+Total Nodes Processed : 16
+Configured Radio Range : 500.0 meters
+Radio links (edges)    : 42
+Optimized Frame Length : 9 unique timeslots (Lower is better)
+Optimality             : PROVEN OPTIMAL (lower bound = 9)
+----------------------------------------------------------------
+NODE -> SLOT ASSIGNMENTS:
+ Node_01: Slot 8
+ Node_02: Slot 7
+ Node_03: Slot 4
+ Node_04: Slot 8
+ Node_05: Slot 5
+ Node_06: Slot 1
+ Node_07: Slot 0
+ Node_08: Slot 6
+ Node_09: Slot 6
+ Node_10: Slot 3
+ Node_11: Slot 2
+ Node_12: Slot 5
+ Node_13: Slot 8
+ Node_14: Slot 4
+ Node_15: Slot 7
+ Node_16: Slot 8
+
+STRUCTURAL TDMA SCHEDULE MATRIX (Slot x Node Boolean Matrix):
+Slot \ Node | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
+---------------------------------------------------------------------------------------------
+Slot 00     |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |
+Slot 01     |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |
+Slot 02     |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |
+Slot 03     |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |
+Slot 04     |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |
+Slot 05     |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |
+Slot 06     |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |
+Slot 07     |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |
+Slot 08     |  1 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  1 |
+---------------------------------------------------------------------------------------------
+
+[1] VERIFICATION  (every 1-hop and 2-hop pair re-checked from coordinates)
+    MATLAB schedule        :  90 interfering pairs checked, 0 conflicts -> PASS
+    Python Brain schedule  :  90 interfering pairs checked, 0 conflicts -> PASS
+
+[2] SPATIAL REUSE  (nodes sharing a slot must be >= 3 hops apart)
+    Slot   Transmitting nodes Closest pair (hops)    Farthest apart (m)
+    0      07                 -                      -
+    1      06                 -                      -
+    2      11                 -                      -
+    3      10                 -                      -
+    4      03 14              3                      949
+    5      05 12              3                      949
+    6      08 09              3                      949
+    7      02 15              3                      949
+    8      01 04 13 16        3                      1273
+    -> 5 of 9 slots are reused; up to 4 radios transmit at once;
+       average 1.78 nodes per slot (token passing would be 1.00).
+
+[3] PACKET-LEVEL SIMULATION  (per frame; 84 receptions possible; slot = 1 ms)
+    Scenario                       Slots Delivered  Collided  Hidden  Direct  Delivery  Deliv./sec
+    ------------------------------------------------------------------------------------------------
+    Distance-2 schedule (MATLAB)       9        84         0       0       0   100.00%        9333
+    Distance-2 schedule (Python)       9        84         0       0       0   100.00%        9333
+    Bad: Node_03 in Node_01 slot       9        74        10       8       2    88.10%        8222
+    Token passing (1 node/slot)       16        84         0       0       0   100.00%        5250
+    All nodes in one slot              1         0        84       0      84     0.00%           0
+    Random schedule (mean of 200)      9     41.95     42.05   32.61    9.44    49.94%        4770
+
+    Reading the table:
+    * Our schedule delivers every possible reception with 9 slots, no collisions.
+    * Token passing is also collision-free but needs 16 slots -> 1.78x lower throughput.
+    * One bad assignment (Node_03 shares Node_01's slot) already loses 11.9% of receptions.
+    * Random slots with the same frame length lose about 50% -> the colouring is what matters.
+
+[4] EFFECT OF RADIO RANGE ON THE 4x4 GRID
+    Range (m)   Links  Slots found  Lower bound    Optimal
+    250             0            1            1        yes
+    350            24            5            5        yes
+    450            42            9            9        yes
+    500            42            9            9        yes
+    650            58           12           11 not proven
+    850            90           16           16        yes
+    1300          120           16           16        yes
+    -> denser connectivity forces more slots; at 850 m and above every node is within
+       2 hops of every other node and the frame degenerates to token passing.
+
+[5] 30 RANDOM 16-NODE TOPOLOGIES (1500 x 1500 m, range 500 m)
+    mean slots used        : 7.63
+    mean lower bound       : 7.53
+    proven optimal         : 27 / 30
+    mean capacity gain     : 2.16x over one node per slot
+
+================================================================
+ FINAL VALUES (4x4 demo grid, 300 m spacing, 500 m range)
+   Frame length        : 9 slots (lower bound 9)
+   Capacity gain       : 1.78x vs token passing (16 slots)
+   Collisions          : 0 (verified); delivery 100.0%
+   Throughput          : 9333 receptions/s at 1 ms slots
+   Execution finalized cleanly. Schedule verified conflict-free.
+================================================================
+Files saved in: E:\MATLAB\works\vaanmegam
+Total run time: 7.4 s

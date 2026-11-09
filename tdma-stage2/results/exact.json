@@ -1,0 +1,137 @@
+[
+  {
+    "family": "random, unit demand",
+    "size": 6,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, unit demand",
+    "size": 8,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, unit demand",
+    "size": 10,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, unit demand",
+    "size": 12,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, unit demand",
+    "size": 14,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, unit demand",
+    "size": 16,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 93.33333333333333,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, unit demand",
+    "size": 20,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 96.66666666666667,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, weighted demand",
+    "size": 6,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, weighted demand",
+    "size": 8,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, weighted demand",
+    "size": 10,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "random, weighted demand",
+    "size": 12,
+    "instances": 30,
+    "proven_optimal": 30,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "grid, unit demand",
+    "size": 9,
+    "instances": 1,
+    "proven_optimal": 1,
+    "greedy_equals_optimum_pct": 100.0,
+    "greedy_equals_clique_bound_pct": 100.0,
+    "max_gap_slots": 0
+  },
+  {
+    "family": "grid, unit demand",
+    "size": 16,
+    "instances": 1,
+    "proven_optimal": 1,
+    "greedy_equals_optimum_pct": 0.0,
+    "greedy_equals_clique_bound_pct": 0.0,
+    "max_gap_slots": 1
+  },
+  {
+    "family": "grid, unit demand",
+    "size": 25,
+    "instances": 1,
+    "proven_optimal": 1,
+    "greedy_equals_optimum_pct": 0.0,
+    "greedy_equals_clique_bound_pct": 0.0,
+    "max_gap_slots": 1
+  },
+  {
+    "family": "grid, unit demand",
+    "size": 36,
+    "instances": 1,
+    "proven_optimal": 1,
+    "greedy_equals_optimum_pct": 0.0,
+    "greedy_equals_clique_bound_pct": 0.0,
+    "max_gap_slots": 1
+  }
+]

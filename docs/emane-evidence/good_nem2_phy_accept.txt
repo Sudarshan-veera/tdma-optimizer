@@ -1,0 +1,9 @@
+nem 2   phy BroadcastPacketAcceptTable0
+| NEM | Num Pkts Tx | Num Bytes Tx | Num Pkts Rx | Num Bytes Rx |
+| 1   | 0           | 0            | 16          | 1856         |
+| 2   | 3           | 894          | 0           | 0            |
+| 3   | 0           | 0            | 4           | 968          |
+| 5   | 0           | 0            | 3           | 894          |
+| 6   | 0           | 0            | 3           | 894          |
+| 7   | 0           | 0            | 3           | 894          |
+
