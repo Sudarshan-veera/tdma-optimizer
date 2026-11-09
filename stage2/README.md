@@ -1,0 +1,77 @@
+# TDMA Planner and Coverage Optimizer - Stage 2
+
+Stage 1 was a 4x4 TDMA schedule planner (Python "brain", EMANE emulation, MATLAB and ns-3 slot simulations).
+Stage 2 scales it to **N radios**, adds a physical radio model, and answers: *how far from the user can the
+network reach while still meeting a throughput and latency target?*
+
+```mermaid
+flowchart LR
+  A[Link budget<br/>Pt, gains, f, sensitivity] --> B[Range Rc<br/>log-distance + shadowing]
+  B --> C[Topology and routing tree<br/>to gateway = user]
+  C --> D[Conflict graph<br/>shared endpoint, hidden terminal, interference]
+  D --> E[Slot assignment<br/>greedy weighted / distributed / exact check]
+  E --> F[SINR validation + repair]
+  F --> G[Schedule: node -> slots]
+  G --> H[Slot simulator<br/>TDMA vs ALOHA vs CSMA]
+  G --> I[Coverage search<br/>max distance under rate + latency]
+  G --> J[ESP32 header export]
+  K[Join / leave] --> E
+```
+
+## Run it (Ubuntu / WSL2)
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+make setup      # numpy, matplotlib, pytest
+make test       # 24 tests
+make demo       # 12-radio walkthrough in the terminal
+make all        # tests + all experiments + docs/RESULTS.md
+make graphs N=18   # graph-theory figures for any number of radios
+```
+
+## What is in it
+| module | what it does |
+|---|---|
+| `tdmaopt/phy.py` | link budget, range, log-normal shadowing, `disk` and `sinr` reception rules |
+| `tdmaopt/topology.py` | random / chain / grid topologies, BFS routing tree, coverage radius |
+| `tdmaopt/schedule.py` | conflict graph, weighted greedy scheduler, distributed scheduler, exact solver, SINR repair |
+| `tdmaopt/sim.py` | slotted simulator for TDMA, ALOHA, CSMA (convergecast to the gateway) |
+| `tdmaopt/dynamic.py` | incremental re-scheduling when a node joins or leaves |
+| `tdmaopt/coverage.py` | chain study and maximum coverage distance under rate and latency limits |
+| `tdmaopt/viz.py` | topology graph, conflict graph + colouring, frame timeline, arrangement patterns, Pareto search |
+| `tdmaopt/export.py` | C header for the ESP32 demo |
+| `experiments/` | one script per result in `docs/RESULTS.md` |
+
+## Algorithms
+* **Conflict graph.** Each node owns one uplink (node -> parent). Two uplinks cannot share a slot if they share an
+  endpoint (half duplex or same receiver), or if one transmitter jams the other's receiver (hidden terminal / interference).
+* **Weighted greedy colouring.** Each node needs as many slots per frame as packets it must send (its own plus everything
+  it forwards). Heaviest nodes are placed first. Terminates after N assignments. Guaranteed frame length
+  `F <= max_i(d_i + sum of neighbours' d_j)`; for unit demand `F <= Delta + 1`.
+* **Distributed variant.** Each pending node picks a random slot from a palette of `Delta + 1` that none of its settled
+  conflict neighbours uses; clashes are broken by node id. Converges in a few rounds because the palette cannot run out.
+* **SINR repair.** A schedule built on pairwise conflicts can still fail when many weak interferers add up. Failing
+  transmissions are moved one at a time to a slot where they work and break nobody; every move lowers the failure count,
+  so the loop converges.
+* **Coverage search.** Add relays along a chain at 0.9 x Rc and stop when the frame can no longer carry the required
+  per-node rate or the worst-case latency (`hops x frame`) exceeds the budget.
+
+## Honest limitations
+* The gateway receives one packet per slot, so when every node reports, frame length grows roughly linearly with N.
+  That is physics of a single sink, not a flaw of the scheduler. For a single flow, spatial reuse keeps the frame at 3 slots for any chain length.
+* Greedy is not optimal in general (optimal colouring is NP-hard). The exact-solver experiment shows where it is optimal
+  and where it loses a slot.
+* Conflict graph construction is O(N^2). Fine to a few hundred nodes; a spatial index would be needed beyond that.
+* The simulator is slot-level: no clock drift, no preamble or ACK timing, no capture effect beyond the SINR threshold.
+* `esp32/tdma_node/tdma_node.ino` is an untested skeleton. Test on real boards before quoting results from it.
+* Latency in `coverage` is a conservative worst-case bound, not a measured value.
+
+## Results
+See `docs/RESULTS.md` (generated) and the plots in `results/`.
+
+## Rank every topology for N radios of range R
+
+    python3 -m tdmaopt.analyze --n 18 --range 100 --distance 800 --users 40
+    make analyze N=18 R=100 ARGS="--distance 800 --users 40"
+
+Inputs: `--n` radios, `--range` metres, `--distance` required reach, `--users` attached users.
+Outputs in `results/`: `analysis_n*_r*.md/.json/.png/_best.png`.

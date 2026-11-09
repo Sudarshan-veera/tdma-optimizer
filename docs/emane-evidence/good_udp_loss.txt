@@ -1,0 +1,4 @@
+01->02:
+[  5]   0.00-15.02  sec   338 KBytes   184 Kbits/sec  4.320 ms  29/375 (7.7%)  receiver
+03->02:
+[  5]   0.00-15.01  sec   343 KBytes   187 Kbits/sec  3.860 ms  24/375 (6.4%)  receiver

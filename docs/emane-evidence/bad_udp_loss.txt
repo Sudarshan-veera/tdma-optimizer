@@ -1,0 +1,4 @@
+01->02:
+iperf3: error - unable to send control message - port may not be available, the other side may have stopped running, etc.: Broken pipe
+03->02:
+[  5]   0.00-19.95  sec   257 KBytes   105 Kbits/sec  3.820 ms  111/374 (30%)  receiver

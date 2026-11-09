@@ -1,0 +1,67 @@
+[
+  {
+    "N": 10,
+    "conflict_ms": 0.04960124965691648,
+    "greedy_ms": 0.047620374971302226,
+    "F": 11.875,
+    "LB": 11.875,
+    "F_unit": 7.25,
+    "reuse": 1.1787587412587412,
+    "dist_rounds": 2.625,
+    "ok": 1.0,
+    "all_conflict_free": true,
+    "F_over_LB": 1.0
+  },
+  {
+    "N": 20,
+    "conflict_ms": 0.1641472499613883,
+    "greedy_ms": 0.10981950026689447,
+    "F": 33.625,
+    "LB": 33.625,
+    "F_unit": 9.375,
+    "reuse": 1.4328466110924563,
+    "dist_rounds": 2.375,
+    "ok": 1.0,
+    "all_conflict_free": true,
+    "F_over_LB": 1.0
+  },
+  {
+    "N": 50,
+    "conflict_ms": 1.1676298752263392,
+    "greedy_ms": 0.35177662471141957,
+    "F": 79.0,
+    "LB": 77.5,
+    "F_unit": 13.75,
+    "reuse": 2.213228936110892,
+    "dist_rounds": 2.75,
+    "ok": 1.0,
+    "all_conflict_free": true,
+    "F_over_LB": 1.0189270658020657
+  },
+  {
+    "N": 100,
+    "conflict_ms": 5.526291249907445,
+    "greedy_ms": 0.9600268749636598,
+    "F": 176.0,
+    "LB": 175.125,
+    "F_unit": 16.5,
+    "reuse": 3.078790941999598,
+    "dist_rounds": 2.75,
+    "ok": 1.0,
+    "all_conflict_free": true,
+    "F_over_LB": 1.0067328540454183
+  },
+  {
+    "N": 200,
+    "conflict_ms": 25.42395237560413,
+    "greedy_ms": 2.6729228750355105,
+    "F": 285.875,
+    "LB": 280.75,
+    "F_unit": 18.5,
+    "reuse": 4.02946352114726,
+    "dist_rounds": 3.0,
+    "ok": 1.0,
+    "all_conflict_free": true,
+    "F_over_LB": 1.0175656017014143
+  }
+]

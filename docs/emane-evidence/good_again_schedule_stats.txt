@@ -1,0 +1,12 @@
+-- NEM 1
+nem 1   mac  scheduler.scheduleAcceptFull = 3
+nem 1   mac  scheduler.scheduleAcceptUpdate = 0
+-- NEM 2
+nem 2   mac  scheduler.scheduleAcceptFull = 3
+nem 2   mac  scheduler.scheduleAcceptUpdate = 0
+-- NEM 3
+nem 3   mac  scheduler.scheduleAcceptFull = 3
+nem 3   mac  scheduler.scheduleAcceptUpdate = 0
+-- NEM 16
+nem 16  mac  scheduler.scheduleAcceptFull = 3
+nem 16  mac  scheduler.scheduleAcceptUpdate = 0

@@ -1,0 +1,6 @@
+scenario,slots_per_frame,frames,attempted_per_frame,delivered_per_frame,collisions_per_frame,hidden_terminal_per_frame,direct_per_frame,half_duplex_per_frame,delivery_ratio,delivered_per_second
+Brain schedule,9,1,84,84,0,0,0,0,1.000000,9333.33
+Bad: Node_03 in Node_01's slot,9,1,84,74,8,4,4,2,0.880952,8222.22
+Token passing (1 node per slot),16,1,84,84,0,0,0,0,1.000000,5250.00
+All nodes in one slot,1,1,84,0,0,0,0,84,0.000000,0.00
+Random schedule (mean of 200),9,1,84.0,43.355,31.845,17.055,14.79,8.8,0.516131,4817.22
