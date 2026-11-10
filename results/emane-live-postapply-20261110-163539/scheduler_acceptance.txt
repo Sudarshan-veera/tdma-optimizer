@@ -1,0 +1,407 @@
+
+========== NEM 1 SCHEDULER COUNTERS ==========
+nem 1   mac  scheduler.scheduleAcceptFull = 3
+nem 1   mac  scheduler.scheduleAcceptUpdate = 0
+nem 1   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 1   mac  scheduler.scheduleRejectOther = 0
+nem 1   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 1   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 1 CURRENT SCHEDULE ==========
+nem 1   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 1   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 2 SCHEDULER COUNTERS ==========
+nem 2   mac  scheduler.scheduleAcceptFull = 3
+nem 2   mac  scheduler.scheduleAcceptUpdate = 0
+nem 2   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 2   mac  scheduler.scheduleRejectOther = 0
+nem 2   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 2   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 2 CURRENT SCHEDULE ==========
+nem 2   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 1     | 0     | 1    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 2     | 0     | 2    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 3     | 0     | 3    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 4     | 0     | 4    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 2   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 3 SCHEDULER COUNTERS ==========
+nem 3   mac  scheduler.scheduleAcceptFull = 3
+nem 3   mac  scheduler.scheduleAcceptUpdate = 0
+nem 3   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 3   mac  scheduler.scheduleRejectOther = 0
+nem 3   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 3   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 3 CURRENT SCHEDULE ==========
+nem 3   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 3   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 4 SCHEDULER COUNTERS ==========
+nem 4   mac  scheduler.scheduleAcceptFull = 3
+nem 4   mac  scheduler.scheduleAcceptUpdate = 0
+nem 4   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 4   mac  scheduler.scheduleRejectOther = 0
+nem 4   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 4   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 4 CURRENT SCHEDULE ==========
+nem 4   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 4   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 5 SCHEDULER COUNTERS ==========
+nem 5   mac  scheduler.scheduleAcceptFull = 3
+nem 5   mac  scheduler.scheduleAcceptUpdate = 0
+nem 5   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 5   mac  scheduler.scheduleRejectOther = 0
+nem 5   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 5   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 5 CURRENT SCHEDULE ==========
+nem 5   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 6     | 0     | 6    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 7     | 0     | 7    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+
+nem 5   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 6 SCHEDULER COUNTERS ==========
+nem 6   mac  scheduler.scheduleAcceptFull = 3
+nem 6   mac  scheduler.scheduleAcceptUpdate = 0
+nem 6   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 6   mac  scheduler.scheduleRejectOther = 0
+nem 6   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 6   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 6 CURRENT SCHEDULE ==========
+nem 6   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 9     | 0     | 9    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 6   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 7 SCHEDULER COUNTERS ==========
+nem 7   mac  scheduler.scheduleAcceptFull = 3
+nem 7   mac  scheduler.scheduleAcceptUpdate = 0
+nem 7   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 7   mac  scheduler.scheduleRejectOther = 0
+nem 7   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 7   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 7 CURRENT SCHEDULE ==========
+nem 7   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 7   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 8 SCHEDULER COUNTERS ==========
+nem 8   mac  scheduler.scheduleAcceptFull = 3
+nem 8   mac  scheduler.scheduleAcceptUpdate = 0
+nem 8   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 8   mac  scheduler.scheduleRejectOther = 0
+nem 8   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 8   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 8 CURRENT SCHEDULE ==========
+nem 8   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 8   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 9 SCHEDULER COUNTERS ==========
+nem 9   mac  scheduler.scheduleAcceptFull = 3
+nem 9   mac  scheduler.scheduleAcceptUpdate = 0
+nem 9   mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 9   mac  scheduler.scheduleRejectOther = 0
+nem 9   mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 9   mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 9 CURRENT SCHEDULE ==========
+nem 9   mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 9   mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 10 SCHEDULER COUNTERS ==========
+nem 10  mac  scheduler.scheduleAcceptFull = 3
+nem 10  mac  scheduler.scheduleAcceptUpdate = 0
+nem 10  mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 10  mac  scheduler.scheduleRejectOther = 0
+nem 10  mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 10  mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 10 CURRENT SCHEDULE ==========
+nem 10  mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 10  mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 11 SCHEDULER COUNTERS ==========
+nem 11  mac  scheduler.scheduleAcceptFull = 3
+nem 11  mac  scheduler.scheduleAcceptUpdate = 0
+nem 11  mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 11  mac  scheduler.scheduleRejectOther = 0
+nem 11  mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 11  mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 11 CURRENT SCHEDULE ==========
+nem 11  mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | RX   | 2400000000 |           |       |       |             |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 11  mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |
+
+
+========== NEM 12 SCHEDULER COUNTERS ==========
+nem 12  mac  scheduler.scheduleAcceptFull = 3
+nem 12  mac  scheduler.scheduleAcceptUpdate = 0
+nem 12  mac  scheduler.scheduleRejectFrameIndexRange = 0
+nem 12  mac  scheduler.scheduleRejectOther = 0
+nem 12  mac  scheduler.scheduleRejectSlotIndexRange = 0
+nem 12  mac  scheduler.scheduleRejectUpdateBeforeFull = 0
+
+========== NEM 12 CURRENT SCHEDULE ==========
+nem 12  mac scheduler.ScheduleInfoTable
+| Index | Frame | Slot | Type | Frequency  | Data Rate | Power | Class | Destination |
+| 0     | 0     | 0    | RX   | 2400000000 |           |       |       |             |
+| 1     | 0     | 1    | RX   | 2400000000 |           |       |       |             |
+| 2     | 0     | 2    | RX   | 2400000000 |           |       |       |             |
+| 3     | 0     | 3    | RX   | 2400000000 |           |       |       |             |
+| 4     | 0     | 4    | RX   | 2400000000 |           |       |       |             |
+| 5     | 0     | 5    | RX   | 2400000000 |           |       |       |             |
+| 6     | 0     | 6    | RX   | 2400000000 |           |       |       |             |
+| 7     | 0     | 7    | RX   | 2400000000 |           |       |       |             |
+| 8     | 0     | 8    | RX   | 2400000000 |           |       |       |             |
+| 9     | 0     | 9    | RX   | 2400000000 |           |       |       |             |
+| 10    | 0     | 10   | TX   | 2400000000 | 10000000  | 0.0   | 0     | 0           |
+| 11    | 0     | 11   | RX   | 2400000000 |           |       |       |             |
+| 12    | 0     | 12   | RX   | 2400000000 |           |       |       |             |
+
+nem 12  mac scheduler.StructureInfoTable
+| Name         | Value   |
+| bandwidth    | 1000000 |
+| frames       | 1       |
+| slotduration | 10000   |
+| slotoverhead | 0       |
+| slots        | 13      |

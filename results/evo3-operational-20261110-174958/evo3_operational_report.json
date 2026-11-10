@@ -1,0 +1,399 @@
+{
+  "experiment": "TDMA Evolution 3 operational upgrade",
+  "predictive_adaptation": {
+    "status": "multi_window_real_emane_measurement",
+    "windows": 4,
+    "pdr_forecasts": {
+      "1": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.0,
+        "observation_count": 4
+      },
+      "2": {
+        "last_observed": 1.0,
+        "predicted_next": 0.988889,
+        "trend_per_window": -0.00222222,
+        "observation_count": 4
+      },
+      "3": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.00666667,
+        "observation_count": 4
+      },
+      "4": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.00735294,
+        "observation_count": 4
+      },
+      "5": {
+        "last_observed": 0.988889,
+        "predicted_next": 0.988889,
+        "trend_per_window": -0.00333333,
+        "observation_count": 4
+      },
+      "6": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.0,
+        "observation_count": 4
+      },
+      "7": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.0,
+        "observation_count": 4
+      },
+      "8": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.0,
+        "observation_count": 4
+      },
+      "9": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.00222222,
+        "observation_count": 4
+      },
+      "10": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.0,
+        "observation_count": 4
+      },
+      "11": {
+        "last_observed": 1.0,
+        "predicted_next": 1.0,
+        "trend_per_window": 0.0,
+        "observation_count": 4
+      }
+    },
+    "queue_forecast_status": "not_forecast: queue values are topology demand estimates, not measured MAC queue telemetry"
+  },
+  "self_healing": {
+    "algorithm_test": "PASS",
+    "failure_injected": "link 3 -> 2",
+    "original_path": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "recovered_path": [
+      3,
+      1,
+      0
+    ],
+    "alternate_path_selected": true,
+    "validation_type": "deterministic_link_failure_simulation",
+    "live_emane_route_modified": false,
+    "live_failover_status": "not_executed: alternate live links need independent connectivity measurements"
+  },
+  "energy_awareness": {
+    "status": "schedule_aware_energy_policy_calculated",
+    "frame_slots": 13,
+    "slot_duration_us": 10000,
+    "power_profile_w": {
+      "tx": 1.2,
+      "rx": 0.9,
+      "idle": 0.25,
+      "sleep": 0.03
+    },
+    "per_nem": {
+      "1": {
+        "tx_slots": [],
+        "rx_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "sleep_candidate_slots": [],
+        "baseline_energy_j": 0.117,
+        "energy_aware_j": 0.117
+      },
+      "2": {
+        "tx_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          11
+        ],
+        "rx_slots": [
+          5,
+          6,
+          7,
+          10,
+          12
+        ],
+        "sleep_candidate_slots": [
+          8,
+          9
+        ],
+        "baseline_energy_j": 0.122,
+        "energy_aware_j": 0.1176
+      },
+      "3": {
+        "tx_slots": [
+          8
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      },
+      "4": {
+        "tx_slots": [
+          10
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      },
+      "5": {
+        "tx_slots": [
+          5,
+          6,
+          7,
+          12
+        ],
+        "rx_slots": [
+          8,
+          9
+        ],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          10,
+          11
+        ],
+        "baseline_energy_j": 0.0835,
+        "energy_aware_j": 0.0681
+      },
+      "6": {
+        "tx_slots": [
+          8,
+          9
+        ],
+        "rx_slots": [
+          10
+        ],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.058,
+        "energy_aware_j": 0.036
+      },
+      "7": {
+        "tx_slots": [
+          9
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      },
+      "8": {
+        "tx_slots": [
+          5
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      },
+      "9": {
+        "tx_slots": [
+          6
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      },
+      "10": {
+        "tx_slots": [
+          10
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      },
+      "11": {
+        "tx_slots": [
+          7
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      },
+      "12": {
+        "tx_slots": [
+          10
+        ],
+        "rx_slots": [],
+        "sleep_candidate_slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12
+        ],
+        "baseline_energy_j": 0.042,
+        "energy_aware_j": 0.0156
+      }
+    },
+    "network_baseline_energy_j_per_frame": 0.7165,
+    "network_energy_aware_j_per_frame": 0.4635,
+    "estimated_savings_j_per_frame": 0.253,
+    "estimated_savings_percent": 35.311,
+    "measurement_status": "model_estimate_using_assumed_power_profile; sleep slots are candidates, not actual EMANE radio sleep states"
+  },
+  "clock_synchronization": {
+    "status": "clock_sync_algorithm_simulation_passed",
+    "virtual_nems": 12,
+    "simulation_duration_s": 30.0,
+    "master_beacon_interval_s": 1.0,
+    "maximum_assumed_drift_ppm": 18.0029,
+    "relative_offset_before_sync_us": 912.4804,
+    "relative_offset_after_sync_us": 0.7957,
+    "recommended_guard_time_us": 20.9757,
+    "base_guard_time_us": 20.0,
+    "slot_duration_us": 10000,
+    "guard_within_slot": true,
+    "measurement_status": "virtual_clock_simulation; independent hardware clock measurements and real EMANE clock correction are not available"
+  },
+  "automated_checks": {
+    "passed": 4,
+    "total": 4
+  },
+  "emane_schedule_modified": false,
+  "emane_routes_modified": false
+}

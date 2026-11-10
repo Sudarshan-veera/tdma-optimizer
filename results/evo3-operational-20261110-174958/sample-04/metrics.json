@@ -1,0 +1,83 @@
+{
+  "sample": 4,
+  "timestamp": "2026-11-10T17:51:06.410979+00:00",
+  "radios": {
+    "1": {
+      "sent": 227,
+      "received": 227,
+      "pdr": 1.0,
+      "queue_packets": 5,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "2": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "3": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "4": {
+      "sent": 136,
+      "received": 136,
+      "pdr": 1.0,
+      "queue_packets": 3,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "5": {
+      "sent": 90,
+      "received": 89,
+      "pdr": 0.9888888888888889,
+      "queue_packets": 2,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "6": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "7": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "8": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "9": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "10": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    },
+    "11": {
+      "sent": 45,
+      "received": 45,
+      "pdr": 1.0,
+      "queue_packets": 1,
+      "queue_source": "topology_subtree_demand_estimate"
+    }
+  }
+}

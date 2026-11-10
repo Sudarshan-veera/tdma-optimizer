@@ -1,0 +1,59 @@
+{
+  "radios": {
+    "1": {
+      "queue_packets": 5,
+      "pdr": 0.98,
+      "link_quality": 0.96
+    },
+    "2": {
+      "queue_packets": 7,
+      "pdr": 0.95,
+      "link_quality": 0.93
+    },
+    "3": {
+      "queue_packets": 4,
+      "pdr": 0.99,
+      "link_quality": 0.98
+    },
+    "4": {
+      "queue_packets": 6,
+      "pdr": 0.97,
+      "link_quality": 0.95
+    },
+    "5": {
+      "queue_packets": 5,
+      "pdr": 0.98,
+      "link_quality": 0.96
+    },
+    "6": {
+      "queue_packets": 3,
+      "pdr": 0.99,
+      "link_quality": 0.98
+    },
+    "7": {
+      "queue_packets": 4,
+      "pdr": 0.97,
+      "link_quality": 0.95
+    },
+    "8": {
+      "queue_packets": 6,
+      "pdr": 0.96,
+      "link_quality": 0.94
+    },
+    "9": {
+      "queue_packets": 5,
+      "pdr": 0.98,
+      "link_quality": 0.97
+    },
+    "10": {
+      "queue_packets": 3,
+      "pdr": 0.99,
+      "link_quality": 0.98
+    },
+    "11": {
+      "queue_packets": 4,
+      "pdr": 0.97,
+      "link_quality": 0.95
+    }
+  }
+}

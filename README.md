@@ -90,3 +90,46 @@ Outputs: `results/opt_n*.md/.json/_layout.csv/_best.png/_compare.png`.
 ## Paper (theory + reproducible results)
 `make paper` regenerates every figure/table in `results/paper/` and compiles `paper/main.tex`
 (IEEEtran is used automatically if installed; otherwise an article-class fallback).
+
+
+## Evolution 3: Adaptive and Operational Enhancements
+
+Validation date: 10 November 2026
+
+Evolution 3 adds eight advancements:
+
+1. Adaptive TDMA scheduling using live telemetry.
+2. Multi-hop routing and gateway forwarding.
+3. Rayleigh and Rician PHY fading integrated into SINR.
+4. Predictive adaptation using four EMANE measurement windows.
+5. Self-healing alternate-route selection after simulated link failure.
+6. Distributed slot coordination and lease validation.
+7. Schedule-aware energy estimation.
+8. Clock synchronization simulation and guard-time estimation.
+
+### Experimental results
+
+- Multi-hop EMANE delivery: 812/813 packets (99.88%).
+- Four-window EMANE delivery: 3244/3252 packets (99.754%).
+- No-fading PHY PDR: 85.000%.
+- Rayleigh fading PDR: 62.645%.
+- Rician fading PDR: 68.245%.
+- Estimated energy savings: 35.311%.
+- Clock offset spread after simulation: 0.7957 us.
+- Distributed scheduling: 20 leases and zero reported collisions.
+
+### Testing
+
+The complete project regression suite passed 65 tests.
+
+Run tests using:
+
+    .venv/bin/python -m pytest -q
+
+### Validation limitations
+
+- Self-healing was tested at algorithm level, not through live EMANE failover.
+- Energy savings are modeled using assumed power values.
+- Clock synchronization was simulated, not measured on hardware.
+- Predictive adaptation uses four measurement windows.
+- Queue demand values are topology-based estimates.

@@ -1,0 +1,11 @@
+{
+  "frame_slots": 13,
+  "changed_radios": [
+    1,
+    4
+  ],
+  "moved_slot_assignments": 2,
+  "conflict_violations": 0,
+  "applied": false,
+  "schedule_xml": "results/emane-live-fresh-20261110-163136/adaptive/schedule_live.xml"
+}
