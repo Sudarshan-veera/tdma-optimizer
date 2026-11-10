@@ -48,9 +48,28 @@ def phy_for_range(range_m: float, base: PHY = None) -> PHY:
 class Channel:
     """Pairwise channel between all nodes. Index 0 is the gateway (the "user")."""
 
-    def __init__(self, pos, phy: PHY, rng=None, model: str = "disk"):
-        assert model in ("disk", "sinr")
+    def __init__(
+        self,
+        pos,
+        phy: PHY,
+        rng=None,
+        model: str = "disk",
+        fading: str = "none",
+        rician_k: float = 3.0,
+        fading_seed: int | None = None,
+    ):
+        if model not in ("disk", "sinr"):
+            raise ValueError("model must be disk or sinr")
+        if fading not in ("none", "rayleigh", "rician"):
+            raise ValueError("fading must be none, rayleigh or rician")
+        if fading != "none" and model != "sinr":
+            raise ValueError("fading requires the sinr channel model")
+        if rician_k < 0:
+            raise ValueError("rician_k cannot be negative")
+
         self.phy, self.model = phy, model
+        self.fading_model = fading
+        self.rician_k = float(rician_k)
         self.pos = np.asarray(pos, dtype=float)
         N = len(self.pos)
         self.N = N
@@ -62,9 +81,42 @@ class Channel:
                 rng = np.random.default_rng(0)
             X = np.triu(rng.normal(0.0, phy.sigma_db, (N, N)), 1)
             pl = pl + X + X.T            # symmetric shadowing
-        self.P = phy.pt_dbm + phy.gt_db + phy.gr_db - pl      # P[i, j]: dBm at j from i
+        self.P = phy.pt_dbm + phy.gt_db + phy.gr_db - pl
         np.fill_diagonal(self.P, -np.inf)
-        self.lin = np.where(np.isfinite(self.P), 10 ** (self.P / 10), 0.0)
+
+        # Block fading: one reciprocal fading sample per link per channel snapshot.
+        self.fading_gain = np.ones((N, N), dtype=float)
+
+        if fading != "none":
+            fading_rng = np.random.default_rng(fading_seed)
+
+            if fading == "rayleigh":
+                raw_gain = fading_rng.exponential(1.0, size=(N, N))
+            else:
+                k = self.rician_k
+                sigma = np.sqrt(1.0 / (2.0 * (k + 1.0)))
+                mean = np.sqrt(k / (k + 1.0))
+                real = fading_rng.normal(mean, sigma, size=(N, N))
+                imag = fading_rng.normal(0.0, sigma, size=(N, N))
+                raw_gain = real * real + imag * imag
+
+            upper = np.triu(raw_gain, 1)
+            self.fading_gain = upper + upper.T
+            np.fill_diagonal(self.fading_gain, 1.0)
+
+        self.P_effective = self.P.copy()
+
+        if fading != "none":
+            safe_gain = np.maximum(self.fading_gain, np.finfo(float).tiny)
+            self.P_effective += 10.0 * np.log10(safe_gain)
+
+        np.fill_diagonal(self.P_effective, -np.inf)
+
+        self.lin = np.where(
+            np.isfinite(self.P_effective),
+            10 ** (self.P_effective / 10),
+            0.0,
+        )
         self.noise_lin = 10 ** (phy.noise_dbm / 10)
         self.Rc = max_range(phy)
         self.Ri = phy.ri_factor * self.Rc
@@ -72,7 +124,7 @@ class Channel:
             self.comm = (self.D <= self.Rc) & ~np.eye(N, dtype=bool)
         else:
             assert phy.beta_db <= phy.sens_dbm - phy.noise_dbm, "beta too high: no link can ever decode"
-            self.comm = (self.P >= phy.sens_dbm)
+            self.comm = (self.P_effective >= phy.sens_dbm)
 
     # ---- reception rule -------------------------------------------------
     def success(self, tx: int, rx: int, txset) -> bool:
@@ -88,7 +140,11 @@ class Channel:
         for k in txset:
             if k != tx:
                 intf += self.lin[k, rx]
-        sinr_db = self.P[tx, rx] - 10 * np.log10(self.noise_lin + intf)
+        if self.fading_model != "none":
+            if self.P_effective[tx, rx] < self.phy.sens_dbm:
+                return False
+
+        sinr_db = self.P_effective[tx, rx] - 10 * np.log10(self.noise_lin + intf)
         return bool(sinr_db >= self.phy.beta_db)
 
     def link_conflict(self, i: int, pi: int, k: int, pk: int) -> bool:
