@@ -1,0 +1,18 @@
+{
+  "experiment": "Evolution 3 integrated controller validation",
+  "input_metrics_radios": 11,
+  "input_parent_routes": 11,
+  "schedule_slots_detected": 13,
+  "tx_elements_detected": 20,
+  "tx_slot_entries_detected": 13,
+  "rx_entries_detected": 13,
+  "distributed_leases": 20,
+  "capacity_exceeded": [],
+  "distributed_slot_collisions_after": 0,
+  "predictor_status": "single-snapshot baseline; needs time-series telemetry for validated forecasting",
+  "self_healing_status": "candidate generation only; requires link-connectivity confirmation before route switching",
+  "energy_status": "model estimate using assumed radio currents, not measured hardware energy",
+  "clock_status": "fallback_guard_no_clock_telemetry",
+  "emane_status": "existing live EMANE schedule left untouched",
+  "validation": "PASS"
+}

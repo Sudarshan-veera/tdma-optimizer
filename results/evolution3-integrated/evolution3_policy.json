@@ -1,0 +1,346 @@
+{
+  "controller": "TDMA Evolution 3 integrated decision layer",
+  "test_count": 5,
+  "topology_radios": 12,
+  "input_schedule_slots": 13,
+  "predictive_adaptation": {
+    "2": {
+      "predicted_pdr": 0.995595,
+      "predicted_queue": 5.0,
+      "confidence": "low_single_snapshot"
+    },
+    "3": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    },
+    "4": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    },
+    "5": {
+      "predicted_pdr": 0.992647,
+      "predicted_queue": 3.0,
+      "confidence": "low_single_snapshot"
+    },
+    "6": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 2.0,
+      "confidence": "low_single_snapshot"
+    },
+    "7": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    },
+    "8": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    },
+    "9": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    },
+    "10": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    },
+    "11": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    },
+    "12": {
+      "predicted_pdr": 1.0,
+      "predicted_queue": 1.0,
+      "confidence": "low_single_snapshot"
+    }
+  },
+  "self_healing": {
+    "low_pdr_threshold": 0.5,
+    "proposals": [],
+    "status": "candidate_routes_only_not_automatically_switched"
+  },
+  "distributed_scheduling": {
+    "assignments": {
+      "0": [
+        2
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        2
+      ],
+      "3": [
+        2
+      ],
+      "4": [
+        2
+      ],
+      "5": [
+        5,
+        8
+      ],
+      "6": [
+        5,
+        9
+      ],
+      "7": [
+        5,
+        11
+      ],
+      "8": [
+        3,
+        6
+      ],
+      "9": [
+        6,
+        7
+      ],
+      "10": [
+        4,
+        10,
+        12
+      ],
+      "11": [
+        2
+      ],
+      "12": [
+        5
+      ]
+    },
+    "leases": {
+      "2": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        11
+      ],
+      "3": [
+        8
+      ],
+      "4": [
+        10
+      ],
+      "5": [
+        5,
+        6,
+        7,
+        12
+      ],
+      "6": [
+        8,
+        9
+      ],
+      "7": [
+        9
+      ],
+      "8": [
+        5
+      ],
+      "9": [
+        6
+      ],
+      "10": [
+        10
+      ],
+      "11": [
+        7
+      ],
+      "12": [
+        10
+      ]
+    },
+    "lease_count": 20,
+    "collisions_before": 0,
+    "collisions_after": 0,
+    "slot_capacity": 13,
+    "capacity_exceeded": []
+  },
+  "energy_model": {
+    "1": {
+      "tx_slots": 0,
+      "rx_slots": 13,
+      "idle_slots": 0,
+      "estimated_energy_mwh_per_frame": 0.00595833,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "2": {
+      "tx_slots": 6,
+      "rx_slots": 0,
+      "idle_slots": 7,
+      "estimated_energy_mwh_per_frame": 0.00692083,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "3": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "4": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "5": {
+      "tx_slots": 4,
+      "rx_slots": 0,
+      "idle_slots": 9,
+      "estimated_energy_mwh_per_frame": 0.0048125,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "6": {
+      "tx_slots": 2,
+      "rx_slots": 0,
+      "idle_slots": 11,
+      "estimated_energy_mwh_per_frame": 0.00270417,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "7": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "8": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "9": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "10": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "11": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    },
+    "12": {
+      "tx_slots": 1,
+      "rx_slots": 0,
+      "idle_slots": 12,
+      "estimated_energy_mwh_per_frame": 0.00165,
+      "assumptions": {
+        "voltage_v": 3.3,
+        "tx_current_ma": 120.0,
+        "rx_current_ma": 50.0,
+        "idle_current_ma": 5.0,
+        "slot_duration_us": 10000
+      },
+      "measurement_status": "model_estimate_not_hardware_measurement"
+    }
+  },
+  "clock_synchronization": {
+    "recommended_guard_us": 50.0,
+    "max_offset_us": null,
+    "max_drift_ppm": null,
+    "status": "fallback_guard_no_clock_telemetry"
+  },
+  "schedule_input": "results/emane-live-fresh-20261110-163136/adaptive/schedule_live.xml",
+  "schedule_change": "none",
+  "automatic_emane_publish": false
+}

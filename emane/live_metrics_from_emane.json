@@ -1,0 +1,60 @@
+{
+  "source": "recorded_emane_baseline_receiver_counters",
+  "radios": {
+    "1": {
+      "queue_packets": 5,
+      "pdr": 0.9970674486803519,
+      "link_quality": 0.9970674486803519
+    },
+    "2": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "3": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "4": {
+      "queue_packets": 3,
+      "pdr": 0.9951219512195122,
+      "link_quality": 0.9951219512195122
+    },
+    "5": {
+      "queue_packets": 2,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "6": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "7": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "8": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "9": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "10": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "11": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    }
+  }
+}

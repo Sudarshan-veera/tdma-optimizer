@@ -1,0 +1,209 @@
+{
+  "experiment": "Monte Carlo block-fading PHY study",
+  "not_live_emane_measurement": true,
+  "seed": 2026,
+  "frame_slots": 13,
+  "frames_per_model": 2000,
+  "max_link_distance_m": 357.7228116852488,
+  "phy": {
+    "tx_dbm": 19.57209507109836,
+    "noise_dbm": -100.0,
+    "sensitivity_dbm": -90.0,
+    "sinr_threshold_db": 8.0,
+    "path_loss_exponent": 2.7
+  },
+  "results": {
+    "none": {
+      "rician_k": null,
+      "frames": 2000,
+      "total_sent": 40000,
+      "total_received": 34000,
+      "overall_pdr": 0.85,
+      "per_link": {
+        "2": {
+          "sent": 12000,
+          "received": 12000,
+          "pdr": 1.0
+        },
+        "3": {
+          "sent": 2000,
+          "received": 2000,
+          "pdr": 1.0
+        },
+        "4": {
+          "sent": 2000,
+          "received": 0,
+          "pdr": 0.0
+        },
+        "5": {
+          "sent": 8000,
+          "received": 4000,
+          "pdr": 0.5
+        },
+        "6": {
+          "sent": 4000,
+          "received": 4000,
+          "pdr": 1.0
+        },
+        "7": {
+          "sent": 2000,
+          "received": 2000,
+          "pdr": 1.0
+        },
+        "8": {
+          "sent": 2000,
+          "received": 2000,
+          "pdr": 1.0
+        },
+        "9": {
+          "sent": 2000,
+          "received": 2000,
+          "pdr": 1.0
+        },
+        "10": {
+          "sent": 2000,
+          "received": 2000,
+          "pdr": 1.0
+        },
+        "11": {
+          "sent": 2000,
+          "received": 2000,
+          "pdr": 1.0
+        },
+        "12": {
+          "sent": 2000,
+          "received": 2000,
+          "pdr": 1.0
+        }
+      }
+    },
+    "rayleigh": {
+      "rician_k": null,
+      "frames": 2000,
+      "total_sent": 40000,
+      "total_received": 25058,
+      "overall_pdr": 0.62645,
+      "per_link": {
+        "2": {
+          "sent": 12000,
+          "received": 4788,
+          "pdr": 0.399
+        },
+        "3": {
+          "sent": 2000,
+          "received": 1013,
+          "pdr": 0.5065
+        },
+        "4": {
+          "sent": 2000,
+          "received": 633,
+          "pdr": 0.3165
+        },
+        "5": {
+          "sent": 8000,
+          "received": 4427,
+          "pdr": 0.553375
+        },
+        "6": {
+          "sent": 4000,
+          "received": 2740,
+          "pdr": 0.685
+        },
+        "7": {
+          "sent": 2000,
+          "received": 1765,
+          "pdr": 0.8825
+        },
+        "8": {
+          "sent": 2000,
+          "received": 1953,
+          "pdr": 0.9765
+        },
+        "9": {
+          "sent": 2000,
+          "received": 1924,
+          "pdr": 0.962
+        },
+        "10": {
+          "sent": 2000,
+          "received": 1915,
+          "pdr": 0.9575
+        },
+        "11": {
+          "sent": 2000,
+          "received": 1954,
+          "pdr": 0.977
+        },
+        "12": {
+          "sent": 2000,
+          "received": 1946,
+          "pdr": 0.973
+        }
+      }
+    },
+    "rician": {
+      "rician_k": 3.0,
+      "frames": 2000,
+      "total_sent": 40000,
+      "total_received": 27298,
+      "overall_pdr": 0.68245,
+      "per_link": {
+        "2": {
+          "sent": 12000,
+          "received": 5970,
+          "pdr": 0.4975
+        },
+        "3": {
+          "sent": 2000,
+          "received": 1160,
+          "pdr": 0.58
+        },
+        "4": {
+          "sent": 2000,
+          "received": 543,
+          "pdr": 0.2715
+        },
+        "5": {
+          "sent": 8000,
+          "received": 4639,
+          "pdr": 0.579875
+        },
+        "6": {
+          "sent": 4000,
+          "received": 3118,
+          "pdr": 0.7795
+        },
+        "7": {
+          "sent": 2000,
+          "received": 1935,
+          "pdr": 0.9675
+        },
+        "8": {
+          "sent": 2000,
+          "received": 1990,
+          "pdr": 0.995
+        },
+        "9": {
+          "sent": 2000,
+          "received": 1987,
+          "pdr": 0.9935
+        },
+        "10": {
+          "sent": 2000,
+          "received": 1978,
+          "pdr": 0.989
+        },
+        "11": {
+          "sent": 2000,
+          "received": 1990,
+          "pdr": 0.995
+        },
+        "12": {
+          "sent": 2000,
+          "received": 1988,
+          "pdr": 0.994
+        }
+      }
+    }
+  }
+}

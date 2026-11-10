@@ -1,0 +1,61 @@
+{
+  "source": "fresh_live_emane_udp_probe",
+  "queue_source": "topology_subtree_demand_estimate",
+  "radios": {
+    "1": {
+      "queue_packets": 5,
+      "pdr": 0.9955947136563876,
+      "link_quality": 0.9955947136563876
+    },
+    "2": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "3": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "4": {
+      "queue_packets": 3,
+      "pdr": 0.9926470588235294,
+      "link_quality": 0.9926470588235294
+    },
+    "5": {
+      "queue_packets": 2,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "6": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "7": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "8": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "9": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "10": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    },
+    "11": {
+      "queue_packets": 1,
+      "pdr": 1.0,
+      "link_quality": 1.0
+    }
+  }
+}
