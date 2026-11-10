@@ -1,0 +1,6 @@
+{
+  "radios": {
+    "1": {"queue_packets": 7, "pdr": 0.97, "link_quality": 0.93},
+    "2": {"queue_packets": 3, "pdr": 0.99, "link_quality": 0.98}
+  }
+}
