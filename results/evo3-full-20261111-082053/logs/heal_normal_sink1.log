@@ -1,0 +1,108 @@
+{
+  "2": {
+    "received_unique": 230,
+    "mean_latency_ms": 37.38283196086957,
+    "max_latency_ms": 83.919736,
+    "mean_hops": 0.0,
+    "last_path": [
+      2
+    ]
+  },
+  "3": {
+    "received_unique": 46,
+    "mean_latency_ms": 57.31284380434783,
+    "max_latency_ms": 81.372725,
+    "mean_hops": 0.0,
+    "last_path": [
+      3
+    ]
+  },
+  "10": {
+    "received_unique": 46,
+    "mean_latency_ms": 59.70819323913043,
+    "max_latency_ms": 161.29863,
+    "mean_hops": 1.0,
+    "last_path": [
+      10,
+      2
+    ]
+  },
+  "8": {
+    "received_unique": 46,
+    "mean_latency_ms": 71.25952704347826,
+    "max_latency_ms": 94.787884,
+    "mean_hops": 0.0,
+    "last_path": [
+      8
+    ]
+  },
+  "9": {
+    "received_unique": 46,
+    "mean_latency_ms": 96.75343826086956,
+    "max_latency_ms": 120.214651,
+    "mean_hops": 0.0,
+    "last_path": [
+      9
+    ]
+  },
+  "11": {
+    "received_unique": 46,
+    "mean_latency_ms": 97.57791482608697,
+    "max_latency_ms": 121.601885,
+    "mean_hops": 0.0,
+    "last_path": [
+      11
+    ]
+  },
+  "7": {
+    "received_unique": 46,
+    "mean_latency_ms": 105.4350262826087,
+    "max_latency_ms": 129.293301,
+    "mean_hops": 0.0,
+    "last_path": [
+      7
+    ]
+  },
+  "12": {
+    "received_unique": 46,
+    "mean_latency_ms": 110.32283076086958,
+    "max_latency_ms": 134.174588,
+    "mean_hops": 0.0,
+    "last_path": [
+      12
+    ]
+  },
+  "5": {
+    "received_unique": 138,
+    "mean_latency_ms": 123.73589892028986,
+    "max_latency_ms": 201.329026,
+    "mean_hops": 1.0,
+    "last_path": [
+      5,
+      2
+    ]
+  },
+  "6": {
+    "received_unique": 92,
+    "mean_latency_ms": 278.1367956630435,
+    "max_latency_ms": 309.838582,
+    "mean_hops": 2.0,
+    "last_path": [
+      6,
+      5,
+      2
+    ]
+  },
+  "4": {
+    "received_unique": 46,
+    "mean_latency_ms": 290.68083869565214,
+    "max_latency_ms": 314.699199,
+    "mean_hops": 3.0,
+    "last_path": [
+      4,
+      6,
+      5,
+      2
+    ]
+  }
+}

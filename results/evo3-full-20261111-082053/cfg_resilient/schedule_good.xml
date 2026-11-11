@@ -1,0 +1,33 @@
+<emane-tdma-schedule>
+  <structure frames='1' slots='13' slotoverhead='0' slotduration='10000' bandwidth='1M'/>
+  <multiframe frequency='2.4G' power='0' class='0' datarate='10M'>
+    <frame index='0'>
+      <slot index='0' nodes='2'><tx/></slot>
+      <slot index='1' nodes='2'><tx/></slot>
+      <slot index='2' nodes='2'><tx/></slot>
+      <slot index='3' nodes='2'><tx/></slot>
+      <slot index='4' nodes='2'><tx/></slot>
+      <slot index='5' nodes='5,8'><tx/></slot>
+      <slot index='6' nodes='5,9'><tx/></slot>
+      <slot index='7' nodes='5,11'><tx/></slot>
+      <slot index='8' nodes='6,7'><tx/></slot>
+      <slot index='9' nodes='6,12'><tx/></slot>
+      <slot index='10' nodes='3'><tx/></slot>
+      <slot index='11' nodes='10'><tx/></slot>
+      <slot index='12' nodes='4'><tx/></slot>
+      <slot index='0' nodes='1'><rx/></slot>
+      <slot index='1' nodes='1'><rx/></slot>
+      <slot index='2' nodes='1'><rx/></slot>
+      <slot index='3' nodes='1'><rx/></slot>
+      <slot index='4' nodes='1'><rx/></slot>
+      <slot index='5' nodes='1'><rx/></slot>
+      <slot index='6' nodes='1'><rx/></slot>
+      <slot index='7' nodes='1'><rx/></slot>
+      <slot index='8' nodes='1'><rx/></slot>
+      <slot index='9' nodes='1'><rx/></slot>
+      <slot index='10' nodes='1'><rx/></slot>
+      <slot index='11' nodes='1'><rx/></slot>
+      <slot index='12' nodes='1'><rx/></slot>
+    </frame>
+  </multiframe>
+</emane-tdma-schedule>

@@ -1,0 +1,23 @@
+Wrote EMANE config set for 12 NEMs, frame 11 slots, into /work/results/evo3-full-20261111-082053/cfg
+Collision probe: NEM 2 and NEM 3 (parent NEM 1) share slots [0] in the bad schedule
+[window 1/4] baseline multi-hop traffic
+[window 2/4] baseline multi-hop traffic
+[window 3/4] baseline multi-hop traffic
+[window 4/4] baseline multi-hop traffic
+[adaptive] surge x2.0 of its slot capacity at NEM 3; static schedule first
+[adaptive] controller: 4 radios changed, frame 11->11, violations 0
+Wrote EMANE config set for 12 NEMs, frame 13 slots, into /work/results/evo3-full-20261111-082053/cfg_resilient
+Collision probe: NEM 2 and NEM 3 (parent NEM 1) share slots [0] in the bad schedule
+[healing] killing relay NEM 5 (subtree [4, 5, 6]); frame 13
+{
+ "distributed_scheduling": "computed_local_negotiation (not over real radio messages)",
+ "fading_sinr": "simulated (Monte Carlo, not EMANE; EMANE here uses binary 80/200 dB pathloss, so it cannot show SINR effects)",
+ "energy_aware": "modelled (assumed power values, no hardware measurement)",
+ "clock_sync": "simulated (assumed drift, no hardware clocks)",
+ "self_healing_algorithm": "computed (algorithm level; the live test is reported separately)",
+ "multi_hop": "measured_emane",
+ "predictive": "measured_emane (walk-forward: forecast window k from windows < k)",
+ "adaptive_scheduling": "measured_emane",
+ "self_healing_live": "measured_emane"
+}
+report: results/evo3-full-20261111-082053/evo3_full_report.json
