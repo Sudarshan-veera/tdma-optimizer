@@ -11,7 +11,7 @@ SECS=15
 N=$(python3 -c "import json;print(len(json.load(open('$JSON'))['layout']))")
 
 down() {
-  pkill emaneeventservice 2>/dev/null; pkill -x emane 2>/dev/null; pkill -f udp_probe 2>/dev/null
+  pkill -f emaneeventservice 2>/dev/null; pkill -x emane 2>/dev/null; pkill -f udp_probe 2>/dev/null
   for i in $(seq 1 $N); do ip netns del n$i 2>/dev/null; ip link del v$i 2>/dev/null; done
   ip link del br0 2>/dev/null
   return 0

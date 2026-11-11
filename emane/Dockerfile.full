@@ -1,0 +1,4 @@
+# Adds numpy + matplotlib to the EMANE image so the Python optimizer/controllers run inside the lab container.
+FROM tdma-emane
+RUN apt-get update && apt-get install -y --no-install-recommends python3-numpy python3-matplotlib \
+    && rm -rf /var/lib/apt/lists/*

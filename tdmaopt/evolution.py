@@ -116,43 +116,49 @@ class MultiHopRouting:
                 if not 0.0 <= pdr <= 1.0:
                     raise ValueError(f"invalid PDR on link {node}->{parent}")
 
-    def _best_path(self, node: int, visiting: set[int]) -> tuple[float, list[int]] | None:
-        if node == self.gateway:
-            return 0.0, [self.gateway]
-        if node in visiting:
-            return None
-        visiting = set(visiting)
-        visiting.add(node)
-        best = None
-        for parent, pdr in self.link_pdr.get(node, {}).items():
-            if pdr <= 0.0:
+    def _dijkstra(self, avoid: int | None = None):
+        """Cheapest ETX (sum of 1/PDR) from every radio to the gateway; a radio in `avoid` is never used as a relay.
+        Polynomial time (the earlier path enumeration was exponential and hung on dense 100-radio graphs)."""
+        import heapq
+        reverse = defaultdict(list)
+        for node, parents in self.link_pdr.items():
+            for parent, pdr in parents.items():
+                if pdr > 0.0 and node != avoid and parent != avoid:
+                    reverse[parent].append((node, 1.0 / pdr))
+        dist = {self.gateway: 0.0}
+        nxt: dict[int, int] = {}
+        heap = [(0.0, self.gateway)]
+        while heap:
+            d, u = heapq.heappop(heap)
+            if d > dist.get(u, float("inf")):
                 continue
-            tail = self._best_path(parent, visiting)
-            if tail is None:
-                continue
-            cost = 1.0 / pdr + tail[0]
-            candidate = (cost, [node] + tail[1])
-            if best is None or candidate[0] < best[0]:
-                best = candidate
-        return best
+            for v, w in sorted(reverse.get(u, ())):
+                nd = d + w
+                if nd < dist.get(v, float("inf")) - 1e-12:
+                    dist[v] = nd
+                    nxt[v] = u
+                    heapq.heappush(heap, (nd, v))
+        return dist, nxt
 
     def route(self, node: int) -> list[int]:
-        result = self._best_path(int(node), set())
-        if result is None:
+        node = int(node)
+        dist, nxt = self._dijkstra()
+        if node not in dist:
             raise RuntimeError(f"No route from radio {node} to gateway {self.gateway}")
-        return result[1]
+        path = [node]
+        while path[-1] != self.gateway:
+            path.append(nxt[path[-1]])
+        return path
 
     def best_parent(self, node: int, candidates: Mapping[int, float] | None = None) -> int:
         node = int(node)
         options = self.link_pdr.get(node, {}) if candidates is None else {int(k): float(v) for k, v in candidates.items()}
+        dist, _ = self._dijkstra(avoid=node)
         best = None
         for parent, pdr in options.items():
-            if parent == node or not 0.0 < pdr <= 1.0:
+            if parent == node or not 0.0 < pdr <= 1.0 or parent not in dist:
                 continue
-            tail = self._best_path(parent, {node})
-            if tail is None:
-                continue
-            candidate = (1.0 / pdr + tail[0], parent)
+            candidate = (1.0 / pdr + dist[parent], parent)
             if best is None or candidate < best:
                 best = candidate
         if best is None:
