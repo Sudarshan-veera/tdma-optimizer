@@ -22,7 +22,7 @@ flowchart LR
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 make setup      # numpy, matplotlib, pytest
-make test       # 24 tests
+make test       # full regression suite
 make demo       # 12-radio walkthrough in the terminal
 make all        # tests + all experiments + docs/RESULTS.md
 make graphs N=18   # graph-theory figures for any number of radios
@@ -128,8 +128,27 @@ Run tests using:
 
 ### Validation limitations
 
-- Self-healing was tested at algorithm level, not through live EMANE failover.
 - Energy savings are modeled using assumed power values.
 - Clock synchronization was simulated, not measured on hardware.
 - Predictive adaptation uses four measurement windows.
 - Queue demand values are topology-based estimates.
+
+
+## Evolution 3 full pipeline: n radios, coverage d, best-case scheduler, live EMANE
+
+    bash emane/evo3_host.sh        # asks for number of radios and coverage, then runs everything
+    python3 emane/evo3_full.py offline --plan results/opt_n12.json --out results/evo3-offline
+
+Live EMANE results (12 radios, one run per experiment, no repeats yet):
+
+| Experiment | Result |
+|---|---|
+| Multi-hop convergecast, up to 4 hops | 99.9% delivery |
+| Forced slot collision | 93.1% |
+| Optimized schedule restored | 99.7% |
+| Adaptive rescheduling, surged radio | 75.7% to 100% |
+| Relay-failure recovery (self-healing) | 80% to 100% |
+
+SINR/fading, energy, clock sync, distributed scheduling and prediction are modelled in simulation, not measured on hardware.
+Above 30 radios the pipeline runs offline only, because one laptop cannot emulate more accurately.
+Full report: `results/evo3-full-20261111-082053/EVO3_FULL_REPORT.md`.
