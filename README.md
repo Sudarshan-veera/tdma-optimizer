@@ -1,5 +1,7 @@
 # TDMA Planner and Coverage Optimizer - Stage 2
 
+Full results report: [docs/EVO3_REPORT.md](docs/EVO3_REPORT.md)
+
 Stage 1 was a 4x4 TDMA schedule planner (Python "brain", EMANE emulation, MATLAB and ns-3 slot simulations).
 Stage 2 scales it to **N radios**, adds a physical radio model, and answers: *how far from the user can the
 network reach while still meeting a throughput and latency target?*
