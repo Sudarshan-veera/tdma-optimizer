@@ -1,4 +1,4 @@
-# TDMA Planner and Coverage Optimizer - Stage 2
+# TDMA Schedule and Topology Optimizer
 
 Full results report: [docs/EVO3_REPORT.md](docs/EVO3_REPORT.md)
 
@@ -111,18 +111,12 @@ Evolution 3 adds eight advancements:
 
 ### Experimental results
 
-- Multi-hop EMANE delivery: 812/813 packets (99.88%).
-- Four-window EMANE delivery: 3244/3252 packets (99.754%).
-- No-fading PHY PDR: 85.000%.
-- Rayleigh fading PDR: 62.645%.
-- Rician fading PDR: 68.245%.
-- Estimated energy savings: 35.311%.
-- Clock offset spread after simulation: 0.7957 us.
-- Distributed scheduling: 20 leases and zero reported collisions.
+Measured on EMANE with 12 radios, and modelled results, are in [docs/EVO3_REPORT.md](docs/EVO3_REPORT.md).
+The authoritative run is `results/evo3-full-20261111-082053`. Earlier runs in `results/` are kept as history.
 
 ### Testing
 
-The complete project regression suite passed 65 tests.
+The complete project regression suite passed 71 tests.
 
 Run tests using:
 
