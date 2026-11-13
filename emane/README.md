@@ -11,4 +11,5 @@ radio's packets are heard by its parent.
 * `Dockerfile`    Ubuntu 24.04 + EMANE 1.5.3 (same as Stage 1)
 
 Expected: good and good_again deliver about 100% on every link; bad loses packets on the two colliding radios.
-Not validated: timing drift, multi-hop forwarding (links are tested one hop at a time), real radios.
+Multi-hop forwarding, adaptive rescheduling and relay-failure recovery are validated by `evo3_full.py` (see ../docs/EVO3_REPORT.md).
+Not validated: timing drift, real radios, more than about 30 emulated radios on one laptop.
