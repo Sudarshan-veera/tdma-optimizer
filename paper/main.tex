@@ -45,8 +45,22 @@ Table~\ref{tab:gap} gives mean frame $\pm$95\% CI over 200 random layouts per si
 Table~\ref{tab:scal} shows spiders up to 476 radios; the frame equals the bound ($N-1$) and scheduling takes well under a second.
 \begin{table}[t]\centering\caption{Spider topologies, scheduling time on one CPU core.}\label{tab:scal}\input{../results/paper/tab_scaling.tex}\end{table}
 
+\subsection{Emulation on EMANE}\label{sec:emane}
+We ran the optimizer's schedule for a 12-radio layout (frame of 11 slots of 10~ms, up to four hops to a receive-only gateway) on EMANE 1.5.3, with one network namespace per radio and a binary path-loss model (80~dB inside range, 200~dB outside). Table~\ref{tab:emane} lists the measured packet delivery. Each value comes from a single run, so no confidence interval is given. Because the path loss is binary, the emulation cannot show fading effects.
+\begin{table}[t]\centering\caption{Packet delivery measured on EMANE, 12 radios.}\label{tab:emane}
+\begin{tabular}{lr}\toprule
+Experiment & Delivery\\\midrule
+Multi-hop convergecast, up to 4 hops & 99.92\%\\
+Optimized schedule & 99.35\%\\
+Forced slot collision & 93.15\%\\
+Optimized schedule restored & 99.67\%\\
+Surged radio, static schedule & 75.74\%\\
+Surged radio, adaptive rescheduling & 100\%\\
+Relay stopped, before / during / after recovery & 100 / 80 / 100\%\\\bottomrule
+\end{tabular}\end{table}
+
 \section{Limitations and Future Work}
-The disk model ignores fading; SINR-based repair and dynamic join/leave are implemented in the accompanying code but not evaluated here. Hardware validation (ESP32/LoRa testbed or EMANE/ns-3) and comparison against published schedulers are planned.
+The disk model ignores fading; SINR-based repair and dynamic join/leave are implemented in the accompanying code but not evaluated here. The EMANE results come from one 12-radio layout and a binary path-loss model, so they do not capture fading; hardware validation (ESP32/LoRa testbed) and comparison against published schedulers are planned.
 
 \section{Conclusion}
 Under a disk interference model, the shortest convergecast frame for a required reach has a closed form met by three-armed spiders, and an order-aware colouring attains it.
