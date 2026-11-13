@@ -1,0 +1,15 @@
+
+[good_again]  per-link delivery (packets heard by the parent / packets sent)
+radio parent slots           dist m   got  sent  loss %
+    2      1 [0, 1, 2, 3, 4]   357.7   340   341     0.3  (pair under test)
+    3      1 [8]              268.9    68    68     0.0  (pair under test)
+    4      6 [10]             178.9    68    68     0.0
+    5      2 [5, 6, 7]        177.9   204   205     0.5
+    6      5 [8, 9]           163.3   136   136     0.0
+    7      1 [9]              135.0    68    68     0.0
+    8      1 [5]               62.5    68    68     0.0
+    9      1 [6]               74.0    68    68     0.0
+   10      2 [10]              52.3    68    68     0.0
+   11      1 [7]               63.4    68    68     0.0
+   12      1 [10]              49.5    68    68     0.0
+overall delivery 99.8%   worst link 99.5%

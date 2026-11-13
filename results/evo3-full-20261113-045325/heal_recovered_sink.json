@@ -1,0 +1,96 @@
+{
+  "2": {
+    "received_unique": 240,
+    "mean_latency_ms": 33.9252957875,
+    "max_latency_ms": 50.767028,
+    "mean_hops": 0.0,
+    "last_path": [
+      2
+    ]
+  },
+  "3": {
+    "received_unique": 60,
+    "mean_latency_ms": 55.245910099999996,
+    "max_latency_ms": 56.604602,
+    "mean_hops": 0.0,
+    "last_path": [
+      3
+    ]
+  },
+  "7": {
+    "received_unique": 60,
+    "mean_latency_ms": 12.777456449999999,
+    "max_latency_ms": 14.353697,
+    "mean_hops": 0.0,
+    "last_path": [
+      7
+    ]
+  },
+  "11": {
+    "received_unique": 60,
+    "mean_latency_ms": 32.611413049999996,
+    "max_latency_ms": 34.373642,
+    "mean_hops": 0.0,
+    "last_path": [
+      11
+    ]
+  },
+  "12": {
+    "received_unique": 60,
+    "mean_latency_ms": 32.736626816666664,
+    "max_latency_ms": 34.949824,
+    "mean_hops": 0.0,
+    "last_path": [
+      12
+    ]
+  },
+  "10": {
+    "received_unique": 60,
+    "mean_latency_ms": 58.20287028333333,
+    "max_latency_ms": 59.61682,
+    "mean_hops": 1.0,
+    "last_path": [
+      10,
+      2
+    ]
+  },
+  "8": {
+    "received_unique": 60,
+    "mean_latency_ms": 86.26533553333334,
+    "max_latency_ms": 87.757934,
+    "mean_hops": 0.0,
+    "last_path": [
+      8
+    ]
+  },
+  "9": {
+    "received_unique": 60,
+    "mean_latency_ms": 105.83818536666666,
+    "max_latency_ms": 106.274917,
+    "mean_hops": 0.0,
+    "last_path": [
+      9
+    ]
+  },
+  "6": {
+    "received_unique": 120,
+    "mean_latency_ms": 139.13203622499998,
+    "max_latency_ms": 141.052411,
+    "mean_hops": 1.0,
+    "last_path": [
+      6,
+      2
+    ]
+  },
+  "4": {
+    "received_unique": 60,
+    "mean_latency_ms": 196.04623445000001,
+    "max_latency_ms": 197.592778,
+    "mean_hops": 2.0,
+    "last_path": [
+      4,
+      6,
+      2
+    ]
+  }
+}

@@ -135,15 +135,15 @@ Run tests using:
     bash emane/evo3_host.sh        # asks for number of radios and coverage, then runs everything
     python3 emane/evo3_full.py offline --plan results/opt_n12.json --out results/evo3-offline
 
-Live EMANE results (12 radios, one run per experiment, no repeats yet):
+Live EMANE results (12 radios, mean and range over 4 runs, details in [docs/EVO3_REPEATS.md](docs/EVO3_REPEATS.md)):
 
 | Experiment | Result |
 |---|---|
-| Multi-hop convergecast, up to 4 hops | 99.9% delivery |
-| Forced slot collision | 93.1% |
-| Optimized schedule restored | 99.7% |
-| Adaptive rescheduling, surged radio | 75.7% to 100% |
-| Relay-failure recovery (self-healing) | 80% to 100% |
+| Multi-hop convergecast, up to 4 hops | 99.98% (99.92 to 100) |
+| Forced slot collision | 92.94% (90.05 to 94.29) |
+| Optimized schedule restored | 99.78% (99.67 to 99.84) |
+| Adaptive rescheduling, surged radio | 75.81% to 100% (100% in all runs) |
+| Relay-failure recovery (self-healing) | 79.82% during failure, 99.94% after recovery |
 
 SINR/fading, energy, clock sync, distributed scheduling and prediction are modelled in simulation, not measured on hardware.
 Above 30 radios the pipeline runs offline only, because one laptop cannot emulate more accurately.

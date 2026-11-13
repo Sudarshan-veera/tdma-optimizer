@@ -1,0 +1,134 @@
+{
+ "n": 12,
+ "frame": 11,
+ "goal": "balanced",
+ "best": "custom (searched layout)",
+ "slot_us": 10000,
+ "links": [
+  {
+   "nem": 2,
+   "parent": 1,
+   "slots": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "dist_m": 357.7,
+   "pps": 22.73,
+   "sent": 341
+  },
+  {
+   "nem": 3,
+   "parent": 1,
+   "slots": [
+    8
+   ],
+   "dist_m": 268.9,
+   "pps": 4.55,
+   "sent": 68
+  },
+  {
+   "nem": 4,
+   "parent": 6,
+   "slots": [
+    10
+   ],
+   "dist_m": 178.9,
+   "pps": 4.55,
+   "sent": 68
+  },
+  {
+   "nem": 5,
+   "parent": 2,
+   "slots": [
+    5,
+    6,
+    7
+   ],
+   "dist_m": 177.9,
+   "pps": 13.64,
+   "sent": 205
+  },
+  {
+   "nem": 6,
+   "parent": 5,
+   "slots": [
+    8,
+    9
+   ],
+   "dist_m": 163.3,
+   "pps": 9.09,
+   "sent": 136
+  },
+  {
+   "nem": 7,
+   "parent": 1,
+   "slots": [
+    9
+   ],
+   "dist_m": 135.0,
+   "pps": 4.55,
+   "sent": 68
+  },
+  {
+   "nem": 8,
+   "parent": 1,
+   "slots": [
+    5
+   ],
+   "dist_m": 62.5,
+   "pps": 4.55,
+   "sent": 68
+  },
+  {
+   "nem": 9,
+   "parent": 1,
+   "slots": [
+    6
+   ],
+   "dist_m": 74.0,
+   "pps": 4.55,
+   "sent": 68
+  },
+  {
+   "nem": 10,
+   "parent": 2,
+   "slots": [
+    10
+   ],
+   "dist_m": 52.3,
+   "pps": 4.55,
+   "sent": 68
+  },
+  {
+   "nem": 11,
+   "parent": 1,
+   "slots": [
+    7
+   ],
+   "dist_m": 63.4,
+   "pps": 4.55,
+   "sent": 68
+  },
+  {
+   "nem": 12,
+   "parent": 1,
+   "slots": [
+    10
+   ],
+   "dist_m": 49.5,
+   "pps": 4.55,
+   "sent": 68
+  }
+ ],
+ "collision": {
+  "a": 2,
+  "b": 3,
+  "parent": 1,
+  "bad_slots_b": [
+   0
+  ]
+ }
+}

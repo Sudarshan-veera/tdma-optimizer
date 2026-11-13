@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE transport SYSTEM "file:///usr/share/emane/dtd/transport.dtd">
+<transport library="transvirtual">
+  <param name="address" value="10.100.0.6"/>
+  <param name="mask" value="255.255.255.0"/>
+</transport>
