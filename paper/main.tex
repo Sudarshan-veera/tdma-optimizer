@@ -46,17 +46,19 @@ Table~\ref{tab:scal} shows spiders up to 476 radios; the frame equals the bound 
 \begin{table}[t]\centering\caption{Spider topologies, scheduling time on one CPU core.}\label{tab:scal}\input{../results/paper/tab_scaling.tex}\end{table}
 
 \subsection{Emulation on EMANE}\label{sec:emane}
-We ran the optimizer's schedule for a 12-radio layout (frame of 11 slots of 10~ms, up to four hops to a receive-only gateway) on EMANE 1.5.3, with one network namespace per radio and a binary path-loss model (80~dB inside range, 200~dB outside). Table~\ref{tab:emane} lists the measured packet delivery. Each value comes from a single run, so no confidence interval is given. Because the path loss is binary, the emulation cannot show fading effects.
-\begin{table}[t]\centering\caption{Packet delivery measured on EMANE, 12 radios.}\label{tab:emane}
+We ran the optimizer's schedule for a 12-radio layout (frame of 11 slots of 10~ms, up to four hops to a receive-only gateway) on EMANE 1.5.3, with one network namespace per radio and a binary path-loss model (80~dB inside range, 200~dB outside). Table~\ref{tab:emane} lists the measured packet delivery. Each value is the mean over four runs of the same layout, with the minimum and maximum in brackets. Because the path loss is binary, the emulation cannot show fading effects.
+\begin{table}[t]\centering\caption{Packet delivery (\%) measured on EMANE, 12 radios, mean (min--max) over four runs.}\label{tab:emane}
 \begin{tabular}{lr}\toprule
 Experiment & Delivery\\\midrule
-Multi-hop convergecast, up to 4 hops & 99.92\%\\
-Optimized schedule & 99.35\%\\
-Forced slot collision & 93.15\%\\
-Optimized schedule restored & 99.67\%\\
-Surged radio, static schedule & 75.74\%\\
-Surged radio, adaptive rescheduling & 100\%\\
-Relay stopped, before / during / after recovery & 100 / 80 / 100\%\\\bottomrule
+Multi-hop convergecast, up to 4 hops & 99.98 (99.92--100)\\
+Optimized schedule & 99.65 (99.35--99.84)\\
+Forced slot collision & 92.94 (90.05--94.29)\\
+Optimized schedule restored & 99.78 (99.67--99.84)\\
+Surged radio, static schedule & 75.81 (75.71--75.94)\\
+Surged radio, adaptive rescheduling & 100 (all runs)\\
+Relay stopped, before & 99.97 (99.86--100)\\
+Relay stopped, during failure & 79.82 (79.28--80.00)\\
+Relay stopped, after recovery & 99.94 (99.76--100)\\\bottomrule
 \end{tabular}\end{table}
 
 \section{Limitations and Future Work}

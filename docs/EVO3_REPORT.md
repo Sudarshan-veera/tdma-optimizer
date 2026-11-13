@@ -31,16 +31,17 @@ NEM 2 carries the traffic of its subtree (NEM 5, 6, 4 and 10), so it owns 5 of t
 
 ![Delivery](img/03_delivery.png)
 
-Each experiment ran once. There are no repeats yet, so there are no error bars.
+The figure shows the first run (`evo3-full-20261111-082053`). The table gives the mean and range over **four runs** of the same layout (see [EVO3_REPEATS.md](EVO3_REPEATS.md)).
 
-| Experiment | Result | What it shows |
+| Experiment | Mean (min to max) over 4 runs | What it shows |
 |---|---|---|
-| Multi-hop convergecast, 4 windows of 976 packets each | **99.92 %** mean (sd 0.10) | The schedule delivers traffic over up to 4 hops |
-| Forced slot collision (NEM 2 and 3 share a slot) | 99.35 % → **93.15 %** | NEM 2 lost 13.8 %, NEM 3 lost 50 % on their links |
-| Optimized schedule restored | **99.67 %** | The optimizer's schedule removes the collision |
-| Surged radio (NEM 3 at 2× its slot capacity) | **75.74 % → 100 %** | Adaptive rescheduling gave it 3 slots instead of 1 |
-| Network delivery during that surge | 78.82 % → 99.92 % | The whole network recovers, not just one radio |
-| Relay NEM 5 stopped | 100 % → **80 %** → **100 %** | Orphaned radio NEM 6 was moved to parent NEM 2, and delivery recovered |
+| Multi-hop convergecast, 4 windows of 976 packets | **99.98 %** (99.92 to 100) | The schedule delivers traffic over up to 4 hops |
+| Optimized schedule, before the collision test | 99.65 % (99.35 to 99.84) | Healthy baseline |
+| Forced slot collision (NEM 2 and 3 share a slot) | **92.94 %** (90.05 to 94.29) | The collision test varies from run to run |
+| Optimized schedule restored | **99.78 %** (99.67 to 99.84) | The optimizer's schedule removes the collision |
+| Surged radio (NEM 3 at 2x its slot capacity), static | 75.81 % (75.71 to 75.94) | The surge overloads its slots |
+| Same surge, adaptive rescheduling | **100 %** in all 4 runs | Adaptive rescheduling gave it 3 slots instead of 1 |
+| Relay NEM 5 stopped: before / during / after recovery | 99.97 / **79.82** / **99.94 %** | Orphaned radio NEM 6 moved to parent NEM 2 |
 
 ![Latency](img/04_latency_hops.png)
 
@@ -67,7 +68,7 @@ EMANE here uses a binary path-loss model (80 dB inside range, 200 dB outside), s
 
 ## 6. Honest limitations
 
-* **One run per experiment.** The 12-radio results are single measurements. Repeating them 3 times and reporting the range is the next step.
+* **Four runs on one laptop.** The ranges come from four runs of one 12-radio layout, so they show run-to-run variation but not behaviour on other layouts.
 * **Only 12 radios were emulated.** One WSL2 laptop cannot emulate 100 radios accurately (a 100-radio attempt delivered about 39 %, which reflects the laptop, not the schedule). Above 30 radios the pipeline runs offline only.
 * **The predictive forecast was no better than a simple baseline.** Forecast error was 0.00039 against 0.00033 for "repeat the last window". With delivery near 100 % there was nothing to predict, so this result is not evidence that prediction helps.
 * **Self-healing needs spare coverage.** The best-case layout is a sparse tree with no backup parents. 0 of 3 relays could be recovered at the design coverage. The live test used a layout with coverage ×1.75 (frame 13, recovering to frame 10), and relay NEM 2 could not be recovered even at ×3.

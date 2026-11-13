@@ -73,7 +73,7 @@ bars(axs[1], ["static", "adaptive"], [ad["surge_node_pdr_pct"]["static"], ad["su
 hp = hl["pdr_pct_of_surviving_nodes"]
 bars(axs[2], ["before", "relay\nfailed", "after\nrecovery"], [hp["before_failure"], hp["during_failure"], hp["after_recovery"]], [C["ok"], C["bad"], C["ok"]], "Relay failure (NEM 5)")
 axs[0].set_ylabel("packet delivery (%)")
-fig.suptitle("Live EMANE results, 12 radios (single run each)", fontsize=10)
+fig.suptitle("Live EMANE results, 12 radios (one run; ranges over 4 runs in EVO3_REPEATS.md)", fontsize=10)
 fig.tight_layout(); fig.savefig(out / "03_delivery.png"); plt.close(fig)
 
 # 4. latency by hops ------------------------------------------------------

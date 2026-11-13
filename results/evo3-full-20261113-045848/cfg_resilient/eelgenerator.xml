@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eventgenerator SYSTEM "file:///usr/share/emane/dtd/eventgenerator.dtd">
+<eventgenerator library="eelgenerator">
+  <param name="inputfile" value="/work/results/evo3-full-20261113-045848/cfg_resilient/scenario.eel"/>
+  <paramlist name="loader">
+    <item value="pathloss:eelloaderpathloss:delta"/>
+  </paramlist>
+</eventgenerator>
