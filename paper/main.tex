@@ -1,73 +1,228 @@
-% Compile: pdflatex main && pdflatex main.  Uses IEEEtran if installed, else article fallback.
-\IfFileExists{IEEEtran.cls}{\documentclass[journal]{IEEEtran}}{\documentclass[10pt,twocolumn]{article}\usepackage[margin=0.75in]{geometry}\newcommand{\IEEEkeywords}{\textbf{Index Terms---}}}
-\usepackage{amsmath,amssymb,amsthm,graphicx,booktabs,cite}
-\input{../results/paper/numbers.tex}
-\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{mathptmx}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\input{generated_tables.tex}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
 \begin{document}
-\title{Optimal Convergecast TDMA Frame Length in Multi-Hop Radio Chains and Spiders: Closed Forms, a Tight Lower Bound, and an Order-Aware Scheduler}
-\author{Sudarshan V\\College of Engineering Guindy, Anna University, Chennai, India}
+\title{Joint Topology and TDMA Schedule Optimization for Multi-Hop Convergecast Radio Networks, with Closed-Loop Validation on the EMANE Emulator}
+\author{\IEEEauthorblockN{Sudarshan V}
+\IEEEauthorblockA{\textit{Department of Electronics and Communication Engineering} \\
+\textit{College of Engineering, Guindy, Anna University}\\
+Chennai, India \\
+sudarshan060617@gmail.com}}
 \maketitle
 \begin{abstract}
-We study TDMA convergecast to a single gateway when every radio relays the traffic of its subtree under a disk interference model. With link length at most $\mu R$ and interference radius $\rho R$, we show that $g+1$ consecutive links on any tree path mutually conflict, $g=\lfloor\rho/\mu\rfloor+1$, which yields a geometry-independent lower bound on the frame length for any topology that must reach distance $D$. We derive the exact frame length of a straight chain, show that spider topologies (up to three arms) meet the bound, and prove that their conflict graphs are chordal, so first-fit colouring in maximum-cardinality-search order is optimal. In \theoryCases{} chain and spider instances the scheduler matched the closed form in \theoryExact{} cases, whereas degree-ordered greedy colouring was suboptimal in \greedySub{} of them, by up to \worstExcess{} slots. The bound was never violated over \boundTrials{} random connected layouts. A 476-radio spider is scheduled in 475 slots (the gateway-cut minimum) in under one second, versus 626 slots for greedy colouring.
+Radios that relay traffic to a single gateway have to agree on two things: where each radio sits, and when each one may transmit. This paper treats both questions together. We built a Python optimizer that takes the number of radios and the coverage of every radio, compares many candidate layouts, and returns a collision-free TDMA schedule with a short frame. Under a disk interference model we prove a closed-form lower bound on the frame length of any layout that must reach a given distance, give the exact frame of a straight chain, and show that spider layouts with up to three arms meet the bound. Their conflict graphs are chordal, so colouring in maximum cardinality search order is optimal. In \theoryCases{} chain and spider instances the scheduler matched the closed form every time, whereas degree-ordered greedy colouring missed it in \greedySub{} instances, by as many as \worstExcess{} slots. A \bigN-radio spider is scheduled in \bigF{} slots in \bigT{} seconds, against \bigG{} for greedy colouring. We then ran the schedule on the EMANE emulator with 12 radios, repeating every experiment \nRuns{} times. Multi-hop delivery reached 99.98 percent. Forcing two radios into one slot cut delivery to 92.9 percent, and the optimized schedule brought it back to 99.8 percent. Adaptive rescheduling raised an overloaded radio from 75.8 to 100 percent, and self-healing restored delivery from 79.8 to 99.9 percent after a relay was stopped. Fading, energy use, clock synchronisation and distributed slot negotiation are studied in simulation only, and we state the limits of each result.
 \end{abstract}
-\begin{IEEEkeywords}TDMA, convergecast scheduling, multi-hop radio networks, interference, topology design, chordal graphs.\end{IEEEkeywords}
+\begin{IEEEkeywords}
+TDMA, convergecast scheduling, topology design, chordal graphs, EMANE, self-healing networks
+\end{IEEEkeywords}
+\section{Introduction}\label{sec:intro}
+Think of a corridor, a tunnel, a pipeline or a convoy. Radios placed along it form chains and trees, and every one of them has to push its traffic to a single gateway over one shared channel. A time-division (TDMA) schedule keeps the transmissions from colliding, but how good the schedule can be depends on where the radios stand. A layout that covers a lot of ground may force a long frame, and a short frame is of no use if the layout no longer reaches the distance the mission needs. A planner therefore faces a joint question: given $n$ radios with known coverage, where should they go, and which radio talks in which slot?
 
-\section{Introduction}
-Long multi-hop radio deployments (corridors, tunnels, pipelines, linear sensor arrays) must share a channel with TDMA. Convergecast scheduling has been studied extensively, including tree-based and heuristic schedulers for sensor networks and distributed colouring such as DRAND \cite{rhee2009}. Prior work optimises schedules for a \emph{given} topology; here we ask which topology, for a given radio count and required reach, admits the shortest frame, and give closed forms. \emph{[Authors: add a related-work paragraph with verified citations (Incel et al., Gandham et al., Ramanathan--Lloyd) before submission.]}
+Most published schedulers take the topology as given and colour its conflict graph \cite{ramanathan1993,rhee2009,incel2012}. We start one step earlier. Our optimizer is handed the number of radios and the coverage of each one, searches over layouts, and schedules every candidate. Neither the number of radios nor their coverage is assumed. This paper makes four contributions.
 
-\section{System Model}
-Radio 0 is the gateway; $N-1$ radios each generate one packet per frame. Links exist between radios at distance $\le\mu R$ ($\mu<1$ is a link margin); a transmission blocks every receiver within $\rho R$. Radios forward along a routing tree, so link $i$ must be scheduled load$_i$ times per frame (its subtree size). Two links conflict if either transmitter lies within $\rho R$ of the other's receiver or they share a radio. The frame length $F$ is the number of slots of a conflict-free schedule. Let $g=\lfloor\rho/\mu\rfloor+1$.
+\begin{itemize}
+\item A joint layout and schedule optimizer for radios with unequal coverage (Section~\ref{sec:opt}). It ranks more than ten topology families together with an annealed free-form layout.
+\item Closed-form results (Section~\ref{sec:theory}): a lower bound on the frame length of any layout that reaches a given distance, the exact frame of a chain, and a proof that spiders with up to three arms meet the bound and are scheduled optimally by maximum cardinality search colouring.
+\item Closed-loop mechanisms (Section~\ref{sec:evo}): adaptive rescheduling, multi-hop routing, self-healing and a forecaster, together with models of fading, energy use, clock synchronisation and distributed slot negotiation.
+\item An emulation study on EMANE (Sections~\ref{sec:setup} and \ref{sec:results}) with 12 radios and \nRuns{} repeated runs, in which every number is labelled as measured, simulated or modelled.
+\end{itemize}
+The rest of the paper is organised as follows. Section~\ref{sec:related} reviews related work, Section~\ref{sec:model} fixes the model, and the later sections present the method, the theory, the experiments and their limits. Code, result files and the scripts that draw every figure are public (see Availability).
 
-\section{Analysis}
-\begin{lemma}[Gateway cut] $F\ge N-1$ (plus attached users).\end{lemma}
-\begin{lemma}[Path window]\label{lem:win} Two links of one tree path whose indices differ by at most $g$ conflict in any geometry.\end{lemma}
-\begin{proof}Let link $k$ be $a\to b$ and link $k+j$ be $c\to d$, $1\le j\le g$. The path from $b$ to $c$ has $j-1$ links, so $|bc|\le(j-1)\mu R\le(g-1)\mu R\le\rho R$ because $g-1=\lfloor\rho/\mu\rfloor$. Transmitter $c$ therefore interferes with receiver $b$ (for $j=1$ they coincide). Hence any $g+1$ consecutive links form a clique.\end{proof}
-\begin{theorem}[Lower bound]\label{thm:lb} If a radio is at distance $\ge D$ from the gateway, the tree contains a path of $\ell=\lceil D/\mu R\rceil$ hops and
-\begin{equation}F\ge\max\{N-1,\;W(\ell)\},\quad W(\ell)=\sum_{j=0}^{\min(g,\ell-1)}(\ell-j).\end{equation}
-For $\ell\ge g+1$, $W=(g+1)\ell-g(g+1)/2$.\end{theorem}
-\begin{proof}The first $g+1$ links of that path form a clique (Lemma~\ref{lem:win}) whose loads are $\ell,\ell-1,\dots$; a clique needs the sum of its loads in slots.\end{proof}
-\begin{theorem}[Chain]A straight chain of $N$ radios needs exactly $F=\max\{N-1,W(N-1)\}$ slots; for $N-1\ge g+1$, $F=(g+1)N-(g+1)(g+2)/2$, i.e.\ $3N-6$ for $\rho=1.5,\mu=0.9$.\end{theorem}
-\begin{theorem}[Spiders]For a spider with at most three arms and conflict-free arm separation, the conflict graph is chordal. First-fit colouring in maximum-cardinality-search order is therefore optimal, and a spider with a longest arm of $\ell$ radios attains $F=\max\{N-1,W(\ell)\}$, meeting Theorem~\ref{thm:lb} with equality.\end{theorem}
-\emph{Proof status:} chordality and tightness are validated exhaustively by the experiments below; a full written proof of chordality for $\rho/\mu$ beyond the tested range is left for the journal version.
+\section{Related Work}\label{sec:related}
+Ramanathan and Lloyd \cite{ramanathan1993} cast the scheduling of multi-hop radio networks as a colouring problem and gave bounds and heuristics for general graphs. For sensor networks, DRAND \cite{rhee2009} builds a conflict-free TDMA assignment in a distributed and randomised way, and Incel et al.\ \cite{incel2012} study how short a schedule for data collection on a tree can be and how the routing tree affects it. All of these optimise the schedule for a topology that is already fixed. In our work the topology is itself a decision, and the frame length is bounded in closed form for the layouts that matter in practice.
 
-\section{Results}
-All numbers are produced by \texttt{python -m tdmaopt.paper}.
-\subsection{Validation of the closed forms}
-Over \theoryCases{} chain and spider instances ($\rho\in[1,2.5]$, $\mu\in\{0.8,0.9,1\}$, $N\le80$) the MCS-order scheduler equalled the closed form in \theoryExact{} cases; greedy colouring was suboptimal in \greedySub{} (Fig.~\ref{fig:D}).
-\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{../results/paper/fig_frame_vs_D.pdf}\caption{Frame length of 60-radio spiders versus required reach $D$ ($\rho=1.5,\mu=0.9$). The proposed scheduler lies on the bound; plain greedy does not.}\label{fig:D}\end{figure}
-\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{../results/paper/fig_rho.pdf}\caption{Chain frame length versus interference ratio $\rho$ ($N=40$): closed form and scheduler agree.}\label{fig:rho}\end{figure}
-\subsection{Bound validity}
-Over \boundTrials{} random connected layouts, the scheduler never produced a frame below the bound (violations: \boundViol); it was tight in \boundTight{} layouts.
-\subsection{Random networks}
-Table~\ref{tab:gap} gives mean frame $\pm$95\% CI over 200 random layouts per size; the gain of order-aware colouring grows with $N$.
-\begin{table}[t]\centering\caption{Random connected layouts, $\rho=1.5,\mu=0.9$.}\label{tab:gap}\input{../results/paper/tab_gap.tex}\end{table}
-\subsection{Scalability}
-Table~\ref{tab:scal} shows spiders up to 476 radios; the frame equals the bound ($N-1$) and scheduling takes well under a second.
-\begin{table}[t]\centering\caption{Spider topologies, scheduling time on one CPU core.}\label{tab:scal}\input{../results/paper/tab_scaling.tex}\end{table}
+The optimality argument rests on chordal graphs. Maximum cardinality search yields a perfect elimination ordering of a chordal graph \cite{tarjan1984}, and greedy colouring along that ordering is optimal because chordal graphs are perfect \cite{golumbic1980}. We show that the conflict graphs of chains and of spiders with up to three arms are chordal, so this classical fact gives their exact frame lengths.
 
-\subsection{Emulation on EMANE}\label{sec:emane}
-We ran the optimizer's schedule for a 12-radio layout (frame of 11 slots of 10~ms, up to four hops to a receive-only gateway) on EMANE 1.5.3, with one network namespace per radio and a binary path-loss model (80~dB inside range, 200~dB outside). Table~\ref{tab:emane} lists the measured packet delivery. Each value is the mean over four runs of the same layout, with the minimum and maximum in brackets. Because the path loss is binary, the emulation cannot show fading effects.
-\begin{table}[t]\centering\caption{Packet delivery (\%) measured on EMANE, 12 radios, mean (min--max) over four runs.}\label{tab:emane}
-\begin{tabular}{lr}\toprule
-Experiment & Delivery\\\midrule
-Multi-hop convergecast, up to 4 hops & 99.98 (99.92--100)\\
-Optimized schedule & 99.65 (99.35--99.84)\\
-Forced slot collision & 92.94 (90.05--94.29)\\
-Optimized schedule restored & 99.78 (99.67--99.84)\\
-Surged radio, static schedule & 75.81 (75.71--75.94)\\
-Surged radio, adaptive rescheduling & 100 (all runs)\\
-Relay stopped, before & 99.97 (99.86--100)\\
-Relay stopped, during failure & 79.82 (79.28--80.00)\\
-Relay stopped, after recovery & 99.94 (99.76--100)\\\bottomrule
-\end{tabular}\end{table}
+EMANE emulates radio networks by running real protocol software over virtual radios with a modelled channel, and it is often paired with CORE \cite{ahrenholz2011}. We use it as our test bed. Clock synchronisation for slotted networks has been studied at length, for instance with reference broadcasts \cite{elson2002}; we only model how the residual clock error sets the guard time. Rayleigh and Rician fading follow their textbook definitions \cite{rappaport2002}.
 
-\section{Limitations and Future Work}
-The disk model ignores fading; SINR-based repair and dynamic join/leave are implemented in the accompanying code but not evaluated here. The EMANE results come from one 12-radio layout and a binary path-loss model, so they do not capture fading; hardware validation (ESP32/LoRa testbed) and comparison against published schedulers are planned.
+\section{System Model and Problem}\label{sec:model}
+\subsection{Network and interference}
+The network has $n$ radios at positions $x_i$. Radio $0$ is the gateway, and each of the other $n-1$ radios generates one packet per frame. Radio $i$ has coverage radius $r_i$. A link between $i$ and $j$ is usable when each end can hear the other:
 
-\section{Conclusion}
-Under a disk interference model, the shortest convergecast frame for a required reach has a closed form met by three-armed spiders, and an order-aware colouring attains it.
+\begin{equation}
+d_{ij}\le \mu\,\min(r_i,r_j),
+\label{eq:link}
+\end{equation}
+where $d_{ij}$ is the distance between the two radios and $\mu\le 1$ is a link margin. To keep layouts realistic, no two radios may sit closer than $s\min(r_i,r_j)$. A transmitting radio $k$ jams every receiver within $\rho r_k$ (the disk model, with $\rho>1$). Unless stated otherwise we use $\mu=0.9$, $s=0.5$ and $\rho=1.5$.
 
-\begin{thebibliography}{1}
-\bibitem{rhee2009} I. Rhee, A. Warrier, J. Min, and L. Xu, ``DRAND: Distributed randomized TDMA scheduling for wireless ad hoc networks,'' \emph{IEEE Trans. Mobile Comput.}, vol.~8, no.~10, pp.~1384--1396, 2009.
+Traffic follows a routing tree rooted at the gateway, built breadth-first over usable links. Link $i$ is the uplink from radio $i$ to its parent, and its load $\ell_i$ is the size of the subtree below it: the radio's own packet plus everything it forwards. Link $i$ therefore needs $\ell_i$ slots in every frame.
+
+\subsection{Conflicts, schedule and frame length}
+Two links conflict if they share a radio, or if the transmitter of one lies within the interference range of the receiver of the other. The conflict graph $G$ has one vertex per link. A schedule gives link $i$ a set of $\ell_i$ slots so that conflicting links never share a slot, and the frame length $F$ is the number of distinct slots used. Since every vertex needs $\ell_i$ slots, $F$ can never be smaller than the weight of any clique $C$ of $G$:
+
+\begin{equation}
+F\ge\omega(G,\ell)=\max_{C}\sum_{i\in C}\ell_i .
+\label{eq:clique}
+\end{equation}
+Minimising $F$ on a general graph is NP-hard, so the optimizer uses heuristics in general and exact results on the structured layouts of Section~\ref{sec:theory}. Latency is bounded by the hop count times $F$, and each radio's throughput is one packet per frame, so a shorter frame helps both.
+
+\subsection{Optimization problem}
+Given the number of radios and every $r_i$, choose the positions and the resulting tree to serve one of four goals: the largest covered area, the farthest radio from the user, the shortest frame, or the largest area per slot (``balanced''). Layouts that break the spacing rule, split the network, miss a required distance or exceed an allowed frame are rejected.
+
+\section{The Optimizer}\label{sec:opt}
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/architecture.png}\caption{Architecture of the optimizer. The number of radios and their coverage become a layout and a TDMA schedule, which runs on EMANE. Measured delivery feeds the adaptation layer, which publishes a new slot table. Dashed boxes are evaluated in simulation only.}\label{fig:arch}\end{figure}
+Fig.~\ref{fig:arch} shows the pipeline. The gateway is placed at the origin, and every candidate layout is turned into a routing tree, a conflict graph and a schedule.
+
+\subsection{Layout candidates}
+The optimizer generates a chain, spiders with 2 to 8 arms, a star, binary and ternary trees, a comb and a ring. When radios differ in coverage, which radio sits where matters, so each tree is tried with the largest ranges nearest the gateway, with the smallest nearest, with an alternating order and with 30 random permutations. A link is drawn with length $\mu$ times the smaller coverage of its two ends. The best presets then seed a simulated-annealing search over the coordinates. Its moves place a radio next to another, nudge a radio, swap two radios, or swing a whole branch about its parent, so it can invent shapes outside the presets. A move that breaks a constraint is never accepted. Whichever candidate scores best for the chosen goal is returned with its positions, link lengths and slot table.
+
+Fig.~\ref{fig:pareto} shows what this search looks like for 18 radios. Every dot is one arrangement, the horizontal axis is how far the layout reaches and the vertical axis is the frame length. The dotted line is the gateway limit of $n-1$ slots, and the red curve is the Pareto front: no arrangement reaches farther without also needing a longer frame. Fig.~\ref{fig:patterns} shows the preset families for the same 18 radios, and makes the trade-off concrete. The star needs only 17 slots but reaches under one coverage radius, the chain reaches 15.3 radii but needs 48 slots, and a three-armed spider reaches 5.4 radii while still fitting in 17 slots.
+
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/pareto.png}\caption{Reach against frame length for 18 radios. Each dot is one arrangement; the red curve is the Pareto front and the dotted line is the gateway limit of $n-1$ slots.}\label{fig:pareto}\end{figure}
+\begin{figure*}[t]\centering\includegraphics[width=0.96\textwidth]{figs/patterns.png}\caption{The preset arrangements for 18 radios. Green arrows are the routing tree to the gateway (star), grey lines are other radio links, and each panel states its frame length, reach and hop count.}\label{fig:patterns}\end{figure*}
+\subsection{Scheduling}
+Each candidate is scheduled by first-fit colouring of the weighted conflict graph: a link takes the lowest slots that none of its conflicting links already uses. The colouring order decides the frame length, so the procedure below tries several orders and keeps the shortest result. The MCS order is maximum cardinality search: after a start vertex, the next vertex is the unvisited one with the most already visited neighbours, with ties broken by load. Plain greedy colouring is one of the candidates, so the optimizer never returns a longer frame than greedy would.
+
+\begin{center}\fbox{\begin{minipage}{0.92\columnwidth}\small\textbf{Procedure: Best-of-orders scheduler}\begin{enumerate}\setlength{\itemsep}{0pt}
+\item Colour the conflict graph first-fit in order of weighted degree and store the result.
+\item For each of the six heaviest links $h$, colour first-fit in MCS order started at $h$ and store the result.
+\item Colour first-fit in reverse smallest-last order and store the result.
+\item Return the stored schedule with the smallest frame length.
+\end{enumerate}\end{minipage}}\end{center}
+Building the conflict graph takes $O(n^2)$ time and each colouring is polynomial, so scheduling a few hundred radios takes well under a second (Section~\ref{sec:results}). Fig.~\ref{fig:best} shows the outcome for the 18-radio case: the best layout with a frame of at most 22 slots, its conflict graph, and the final slot table, which uses 21 slots against a clique lower bound of 21.
+
+\begin{figure*}[t]\centering\includegraphics[width=0.96\textwidth]{figs/best.png}\caption{Best 18-radio arrangement with a frame of at most 22 slots (left), its conflict graph coloured greedily (centre), and the resulting TDMA frame of 21 slots (right).}\label{fig:best}\end{figure*}
+\section{Closed-Form Results}\label{sec:theory}
+Assume that radios on a path are at most $\mu R$ apart, where $R$ is a common coverage radius, and that interference reaches $\rho R$. Let $g=\lfloor\rho/\mu\rfloor+1$ be the number of consecutive links on a path that always conflict with a given link, and define the window sum
+
+\begin{equation}
+W(\ell)=\sum_{j=0}^{\min(g,\ell-1)}(\ell-j),
+\label{eq:window}
+\end{equation}
+which equals $(g+1)\ell-g(g+1)/2$ whenever $\ell\ge g+1$.
+
+\begin{lemma}[Gateway cut]\label{lem:cut}
+$F\ge n-1$, plus any attached users.
+\end{lemma}
+\begin{IEEEproof}
+The gateway receives at most one packet per slot, and it must receive the packet of every other radio.
+\end{IEEEproof}
+\begin{lemma}[Path window]\label{lem:window}
+On any tree path, any $g+1$ consecutive links conflict with one another, whatever the geometry.
+\end{lemma}
+\begin{IEEEproof}
+Number the links of the path from the gateway. Let link $k$ be $a\to b$ and link $k+j$ be $c\to d$ with $1\le j\le g$. The path from $b$ to $c$ has $j-1$ links, so the distance from $b$ to $c$ is at most $(j-1)\mu R\le(g-1)\mu R\le\rho R$, because $g-1=\lfloor\rho/\mu\rfloor$. Transmitter $c$ therefore interferes with receiver $b$. For $j=1$ the two coincide.
+\end{IEEEproof}
+\begin{theorem}[Lower bound]\label{thm:lb}
+If some radio must lie at distance at least $D$ from the gateway, the tree contains a path of $\ell=\lceil D/\mu R\rceil$ hops and
+\begin{equation}
+F\ge\max\{n-1,\,W(\ell)\}.
+\label{eq:lb}
+\end{equation}
+\end{theorem}
+\begin{IEEEproof}
+On that path, the link at hop $k$ carries at least the $\ell-k+1$ packets of the radios beyond it. The first $g+1$ links form a clique (Lemma~\ref{lem:window}), so by \eqref{eq:clique} they need at least $W(\ell)$ slots. Combine this with Lemma~\ref{lem:cut}.
+\end{IEEEproof}
+\begin{proposition}[Chain]\label{prop:chain}
+A straight chain of $n$ radios spaced $\mu R$ apart needs exactly $F=W(n-1)$ slots. For $n-1\ge g+1$ this equals $(g+1)(n-1)-g(g+1)/2$, which is $3n-6$ for $\rho=1.5$ and $\mu=0.9$.
+\end{proposition}
+\begin{theorem}[Spiders]\label{thm:spider}
+Let a spider have $a\le 3$ straight arms of equally spaced radios, with $\rho<\rho^\star(a)$, where $\rho^\star(1)=\infty$, $\rho^\star(2)=2\mu$ and $\rho^\star(3)=\sqrt3\,\mu$. Let the longest arm have $\ell$ radios. Then the conflict graph is chordal, maximum cardinality search first-fit colouring is optimal, and $F=\max\{n-1,\,W(\ell)\}$, which meets \eqref{eq:lb} with equality.
+\end{theorem}
+\begin{IEEEproof}
+Within an arm. Number the links of an arm $1,2,\dots$ from the gateway. For $i<j$ the closest transmitter-receiver pair is the transmitter of link $i$ and the receiver of link $j$, at distance $(j-i-1)\mu R$. The links conflict exactly when $j-i\le g$. This is a proper interval graph, hence chordal. Between arms. For radios $p,q\ge1$ on different arms, the distance is at least $(p+q)\mu R\ge 2\mu R$ for two arms and at least $\sqrt{p^2+pq+q^2}\,\mu R\ge\sqrt3\,\mu R$ for three arms, both larger than $\rho R$. The same holds from any radio with $p\ge2$ to the gateway. The only cross-arm conflicts are therefore among the first links, which share the gateway as receiver, and these form a clique. Chordality. Each first link is a cut vertex between the rest of its arm and the remaining graph, and a chordless cycle of length four or more cannot pass through a cut vertex. Every remaining piece is chordal, so the whole graph is. Replacing each link of load $\ell_i$ by a clique of $\ell_i$ copies keeps it chordal. Optimality. The visiting order of maximum cardinality search is the reverse of a perfect elimination ordering \cite{tarjan1984}, and listing the copies of a link consecutively preserves this. First-fit colouring along it uses $\omega$ colours \cite{golumbic1980}. The maximal cliques are the windows of $g+1$ consecutive links inside one arm and the set of first links, so $\omega=\max\{n-1,\max_i W(a_i)\}$ for arm lengths $a_i$. Since $W$ is increasing, this equals $\max\{n-1,W(\ell)\}$.
+\end{IEEEproof}
+Proposition~\ref{prop:chain} is the one-arm case. The conditions on $\rho$ are exactly those under which the arms do not interfere beyond the gateway. For larger $\rho$ the bound still holds but may not be tight.
+
+\section{Closed-Loop Mechanisms and Models}\label{sec:evo}
+Seven mechanisms extend the static schedule. Section~\ref{sec:results} labels every result as measured on EMANE, simulated, or modelled.
+
+\emph{Adaptive rescheduling} (measured). A controller reads the packet rate of every radio and sizes its slot count so that planned utilisation stays at or below $0.8$, assuming a capacity of 29 packets per slot. It then recomputes a conflict-free schedule, checks that no conflict remains, and publishes the new slot table to the running radios.
+
+\emph{Multi-hop routing} (measured). Each radio forwards along the route with the smallest expected transmission count, the sum of $1/\mathrm{PDR}$ over the links, found with Dijkstra's algorithm. An earlier path-enumeration version took exponential time on dense graphs and was replaced.
+
+\emph{Self-healing} (measured). A relay failure is detected from per-radio delivery within one measurement window. Each orphaned radio picks the best parent outside the failed subtree, and the schedule is recomputed for the new tree. The best-case layouts of Section~\ref{sec:opt} are sparse and have no backup parents, so recovery needs spare coverage. For every relay we therefore compute the smallest uniform coverage multiplier that gives each orphan a new parent.
+
+\emph{Predictive forecasting} (measured). A least-squares trend over a sliding window forecasts queue depth and delivery. On EMANE it is scored walk-forward: window $k$ is forecast only from earlier windows and compared with a persistence baseline that repeats the last window.
+
+\emph{Fading and SINR} (simulated). Received power is the transmit power, set from each radio's own coverage, minus a path loss of free-space loss at 1~m plus a 27~dB-per-decade term, multiplied by a random fading gain, exponential for Rayleigh or Rician with $K=3$. A packet is received if its power exceeds $-90$~dBm and its SINR is at least 8~dB, with noise at $-100$~dBm and every concurrent transmitter in the slot counted as interference. A SINR-safe repacking of the schedule is also computed.
+
+\emph{Distributed slot negotiation} (simulated). Every radio negotiates slots only with its conflicting neighbours, from a pool of leases larger than the frame, with no central scheduler. The messages are simulated and not sent over radios.
+
+\emph{Energy and clocks} (modelled). A radio listens only in slots where one of its children transmits and sleeps otherwise, and the energy per frame is the time in each state multiplied by an assumed power. For clocks, each radio starts with a random offset of up to 500~$\mu$s and drifts by up to 20~ppm, and a master beacon once a second removes the offset down to 1~$\mu$s of jitter. The guard time is $2\max_i(|\mathrm{offset}_i|+|\mathrm{drift}_i|\,T)$ for a beacon interval $T$.
+
+\section{Experimental Setup}\label{sec:setup}
+\emph{Test bed.} EMANE 1.5.3 with its TDMA radio model runs 12 radios, each in its own Linux network namespace inside a privileged Docker container (Fig.~\ref{fig:testbed}). NEM 1 is the gateway, and radio $k$ of the optimizer is NEM $k+1$. Slots last 10~ms. The channel is a binary path-loss model built from each radio's coverage, 80~dB inside range and 200~dB outside, so EMANE here cannot show SINR or fading effects. The gateway never transmits and so cannot answer address-resolution requests; static neighbour entries replace them. The host is a six-core laptop with 3.8~GiB of memory under WSL2.
+
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/testbed.png}\caption{EMANE test bed. Each radio runs in its own network namespace on a bridge; the optimizer's slot table and the path-loss events are applied to all of them.}\label{fig:testbed}\end{figure}
+\emph{Layout.} The input was 12 radios with coverage between 500~m and 60~m. The annealed layout the optimizer returned (Fig.~\ref{fig:topology}) has a frame of 11 slots and up to 4 hops, and Fig.~\ref{fig:schedule} shows its slot table. NEM 2 is a busy relay and owns five slots.
+
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/topology.png}\caption{The 12-radio layout chosen by the optimizer. Arrows point to the parent, and the red pair (NEM 2 and 3) is used in the collision test.}\label{fig:topology}\end{figure}
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/schedule.png}\caption{Optimized TDMA slot table for the 12 radios. A filled cell means the radio may transmit in that slot; radios that do not conflict share slots.}\label{fig:schedule}\end{figure}
+\emph{Traffic and metrics.} Every radio sends one-way UDP probes toward the gateway, and relays forward them. Delivery is the fraction of packets received. For multi-hop traffic we measure four windows of 12~s with 976 packets each at the gateway. For the baseline, per-link delivery is counted at each radio's parent. Three experiments were run.
+
+\begin{itemize}
+\item Collision test: the optimized schedule, then a schedule in which NEM 2 and NEM 3 share slot 0, then the optimized schedule again.
+\item Surge: NEM 3 sends at twice its slot capacity (527 packets per second), first under the static schedule and then under the adaptive one.
+\item Relay failure: the process of relay NEM 5, which forwards NEM 4 and NEM 6, is stopped. This uses a layout with coverage multiplied by 1.75 (frame 13).
+\end{itemize}
+The full set was run \nRuns{} times on the same layout. Every table and figure that reports measurements gives the mean and the minimum to maximum over the runs.
+
+\section{Results}\label{sec:results}
+\subsection{Closed forms and scalability (simulation)}
+Over \theoryCases{} chain and spider instances ($\rho\in[1,2.5]$, $\mu\in\{0.8,0.9,1\}$, up to 80 radios) the scheduler produced exactly the frame length predicted by Proposition~\ref{prop:chain} and Theorem~\ref{thm:spider} in \theoryExact{} cases. Degree-ordered greedy colouring was longer in \greedySub{} of them, by up to \worstExcess{} slots. Over \boundTrials{} random connected layouts the scheduler never produced a frame below the bound of Theorem~\ref{thm:lb}, and it met the bound exactly in \boundTight{} of them.
+
+Fig.~\ref{fig:scaling} and Table~\ref{tab:scal} follow three-arm spiders up to \bigN{} radios. The frame equals the lower bound at every size, whereas greedy colouring needs \bigG{} slots against \bigF{} at $n=\bigN$. Scheduling the largest instance takes \bigT{}~s on one core.
+
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/scaling.png}\caption{Frame length of three-arm spiders. The proposed scheduler lies on the lower bound; degree-ordered greedy colouring does not.}\label{fig:scaling}\end{figure}
+\begin{table}[t]\caption{Frame length (slots) of spider layouts}\label{tab:scal}\centering\tabScal\end{table}
+On random connected layouts the advantage is small (Table~\ref{tab:gap}, 200 layouts per size, mean $\pm$ 95\% confidence interval). The order-aware scheduler gains between 0.1\% and 1.3\%, and the gain grows with $n$. The large gains are on structured layouts, which is where the optimality proof applies.
+
+\begin{table}[t]\caption{Random layouts, frame length (slots)}\label{tab:gap}\centering\tabGap\end{table}
+\subsection{Packet delivery on EMANE (measured)}
+Table~\ref{tab:emane} summarises the live experiments, and Fig.~\ref{fig:delivery} shows the three scenarios of one run. With the optimized schedule, 99.65\% of packets arrive on every link and 99.98\% of multi-hop packets reach the gateway. Mean latency grows with the number of hops (Fig.~\ref{fig:latency}) and stays below the bound of hops times frame.
+
+\begin{table}[t]\caption{Packet delivery on EMANE, 12 radios, \nRuns{} runs}\label{tab:emane}\centering\tabEmane\end{table}
+\begin{figure*}[t]\centering\includegraphics[width=0.96\textwidth]{figs/delivery.png}\caption{Live EMANE results for 12 radios in a single run: slot collision (left), a surged radio (centre) and a relay failure (right). Green is intended operation, red is the fault or overload.}\label{fig:delivery}\end{figure*}
+When NEM 2 and NEM 3 are made to share a slot, delivery falls to 92.94\%, and it varies from 90.05\% to 94.29\% between runs because the number of colliding packets changes. In individual runs NEM 2 loses between 7\% and 31\% of its packets and NEM 3 between 23\% and 69\%. Restoring the optimized schedule brings delivery back to 99.78\%.
+
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/latency.png}\caption{Mean one-way latency against hop count. Latency grows with distance from the gateway.}\label{fig:latency}\end{figure}
+\subsection{Adaptive rescheduling (measured)}
+Under the static plan the surged radio NEM 3 delivers 75.81\% of its packets (75.71\% to 75.94\% across runs). After the controller update NEM 3 owns three slots instead of one and delivers 100\% in every run (Fig.~\ref{fig:adaptive}). The frame stays at 11 slots, no conflicts appear, and NEM 2, NEM 5 and NEM 6, whose measured load is low, are cut to one slot each. In the first run, delivery of the whole network rose from 78.82\% to 99.92\%. A full re-optimisation would need 9 slots for the same demand, so the incremental update is not yet as tight.
+
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/adaptive.png}\caption{Slot table before and after the adaptive update. Red marks the surged radio and orange the radios whose slots changed.}\label{fig:adaptive}\end{figure}
+\subsection{Self-healing (measured)}
+Stopping relay NEM 5 cuts off NEM 4 and NEM 6, so delivery from the ten surviving radios drops from 99.97\% to 79.82\%, which is the expected eight out of ten. The failure is detected from delivery within one window. NEM 6 is re-attached to NEM 2, the schedule is recomputed (frame 13 before, 10 after), and delivery returns to 99.94\% (Fig.~\ref{fig:healing}). Recovery needed a coverage multiplier of 1.75 for relays NEM 5 and NEM 6, and relay NEM 2 could not be recovered within a multiplier of 3 because the layout offers no alternative path around it. At the design coverage, none of the three relays tested could be recovered. That is the price of sparse best-case layouts: short frames, but no redundancy.
+
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/healing.png}\caption{Self-healing. After relay NEM 5 is stopped, the orphaned NEM 6 attaches to NEM 2 (green).}\label{fig:healing}\end{figure}
+\subsection{Simulated and modelled results}
+Table~\ref{tab:model} lists what was not measured on EMANE. Under fading, the optimized schedule loses a good part of its delivery unless extra power is spent as fade margin (Fig.~\ref{fig:fading}). Without fading it is SINR-safe, and a SINR-safe repacking of this layout needs no extra slots. Distributed negotiation costs 18.2\% more frame than the central scheduler. The energy saving rests on assumed powers, and the clock results on an assumed drift. The forecaster was no better than repeating the last window (error 0.00039 against 0.00033): delivery was close to 100\% in every window, so there was little to predict, and this result gives no evidence that prediction helps.
+
+\begin{table}[t]\caption{Simulated and modelled results (not measured on hardware)}\label{tab:model}\centering\small\tabModel\end{table}
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figs/fading.png}\caption{Simulated packet delivery of the optimized schedule under Rayleigh and Rician fading, against the extra transmit power used as fade margin.}\label{fig:fading}\end{figure}
+\section{Limitations}\label{sec:limits}
+\begin{itemize}
+\item One layout, one laptop. The EMANE results are four runs of a single 12-radio layout. They show run-to-run variation but not behaviour on other layouts. A 100-radio attempt delivered about 39\% because the laptop could not hold slot timing, so beyond about 30 radios the pipeline runs offline only.
+\item Binary channel. EMANE here uses 80/200~dB path loss, so fading, capture and aggregate interference are simulated rather than emulated.
+\item Disk model. The optimality results assume the disk interference model, and the schedule is not guaranteed to be SINR-safe in general; a repacking step is needed.
+\item Sparse layouts. The best-case layouts have no backup parents, so self-healing needs extra coverage or extra radios.
+\item Adaptive step. The incremental controller leaves the frame at 11 slots where a full re-optimisation gives 9.
+\item Models. Energy, clock synchronisation, fading parameters and distributed negotiation use assumed values and were not measured on hardware. The ESP32 node code is an untested skeleton.
+\item Random networks. On random layouts the order-aware scheduler gains at most about 1.3\% over greedy colouring.
+\end{itemize}
+\section{Conclusion}\label{sec:concl}
+A planner that is given only the number of radios and their coverage can return a layout together with a collision-free TDMA schedule. Under the disk model, the frame length of a layout that reaches a given distance has a closed-form lower bound; chains and spiders with up to three arms meet it, and maximum cardinality search colouring finds their optimal schedule. On EMANE with 12 radios the schedule delivered 99.98\% of multi-hop traffic, a forced collision reduced delivery to 92.9\%, and the optimized schedule, adaptive rescheduling and self-healing restored it to 99.8\%, 100\% and 99.9\%. Future work includes repeated runs on more layouts, emulation with a fading channel, and tests on real radios.
+
+\section*{Availability}
+Code, results and the figure scripts are at github.com/Sudarshan-veera/tdma-optimizer (branch evolution-3-complete, tag v3.0). The architecture and test-bed diagrams are provided as draw.io files in the paper folder.
+
+\begin{thebibliography}{00}
+\bibitem{ramanathan1993} S. Ramanathan and E. L. Lloyd, ``Scheduling algorithms for multihop radio networks,'' \emph{IEEE/ACM Trans. Netw.}, vol. 1, no. 2, pp. 166--177, Apr. 1993.
+\bibitem{rhee2009} I. Rhee, A. Warrier, J. Min, and L. Xu, ``DRAND: Distributed randomized TDMA scheduling for wireless ad hoc networks,'' \emph{IEEE Trans. Mobile Comput.}, vol. 8, no. 10, pp. 1384--1396, Oct. 2009.
+\bibitem{incel2012} O. D. Incel, A. Ghosh, B. Krishnamachari, and K. Chintalapudi, ``Fast data collection in tree-based wireless sensor networks,'' \emph{IEEE Trans. Mobile Comput.}, vol. 11, no. 1, pp. 86--99, Jan. 2012.
+\bibitem{tarjan1984} R. E. Tarjan and M. Yannakakis, ``Simple linear-time algorithms to test chordality of graphs, test acyclicity of hypergraphs, and selectively reduce acyclic hypergraphs,'' \emph{SIAM J. Comput.}, vol. 13, no. 3, pp. 566--579, 1984.
+\bibitem{golumbic1980} M. C. Golumbic, \emph{Algorithmic Graph Theory and Perfect Graphs}. New York, NY, USA: Academic Press, 1980.
+\bibitem{ahrenholz2011} J. Ahrenholz, T. Goff, and B. Adamson, ``Integration of the CORE and EMANE network emulators,'' in \emph{Proc. IEEE Military Commun. Conf. (MILCOM)}, Baltimore, MD, USA, 2011, pp. 1870--1875.
+\bibitem{elson2002} J. Elson, L. Girod, and D. Estrin, ``Fine-grained network time synchronization using reference broadcasts,'' in \emph{Proc. 5th Symp. Operating Systems Design and Implementation (OSDI)}, Boston, MA, USA, 2002.
+\bibitem{rappaport2002} T. S. Rappaport, \emph{Wireless Communications: Principles and Practice}, 2nd ed. Upper Saddle River, NJ, USA: Prentice Hall, 2002.
 \end{thebibliography}
 \end{document}

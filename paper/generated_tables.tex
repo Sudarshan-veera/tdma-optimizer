@@ -1,0 +1,36 @@
+\newcommand{\theoryCases}{223}\newcommand{\theoryExact}{223}\newcommand{\boundTrials}{2000}\newcommand{\boundViol}{0}\newcommand{\boundTight}{107}
+\newcommand{\greedySub}{16}\newcommand{\worstExcess}{13}\newcommand{\nRuns}{4}
+\newcommand{\bigN}{476}\newcommand{\bigF}{475}\newcommand{\bigG}{626}\newcommand{\bigT}{0.30}
+\newcommand{\tabGap}{\begin{tabular}{rrrr}\toprule $N$ & Greedy & Proposed & Gain (\%)\\\midrule
+20 & 34.2$\pm$1.8 & 34.2$\pm$1.8 & 0.1\\
+40 & 76.3$\pm$3.8 & 76.2$\pm$3.8 & 0.2\\
+80 & 177.0$\pm$10.0 & 174.8$\pm$9.6 & 1.3\\
+\bottomrule\end{tabular}}
+\newcommand{\tabScal}{\begin{tabular}{rrrr}\toprule $N$ & Frame & Bound & Greedy\\\midrule
+10 & 12 & 12 & 12\\
+20 & 27 & 27 & 27\\
+40 & 39 & 39 & 46\\
+80 & 79 & 79 & 98\\
+160 & 159 & 159 & 206\\
+320 & 319 & 319 & 418\\
+476 & 475 & 475 & 626\\
+\bottomrule\end{tabular}}
+\newcommand{\tabEmane}{\begin{tabular}{lc}\toprule Experiment & Delivery (\%), mean (min--max)\\\midrule
+Multi-hop traffic, up to 4 hops & 99.98 (99.92--100.00)\\
+Optimized schedule (baseline) & 99.65 (99.35--99.84)\\
+Forced slot collision & 92.94 (90.05--94.29)\\
+Optimized schedule restored & 99.78 (99.67--99.84)\\
+Surged radio, static schedule & 75.81 (75.71--75.94)\\
+Surged radio, adaptive schedule & 100.00\\
+Relay stopped: before & 99.97 (99.86--100.00)\\
+Relay stopped: during & 79.82 (79.28--80.00)\\
+Relay stopped: after recovery & 99.94 (99.76--100.00)\\
+\bottomrule\end{tabular}}
+\newcommand{\tabModel}{\begin{tabular}{p{1.05in}p{2.0in}}\toprule Model & Result\\\midrule
+Distributed slots & frame 13 vs.\ 11 slots centralized (+18.2\%), 0 conflicts\\
+Energy-aware radios & 67.25\% less energy per frame (1.2/0.9/0.25/0.03~W tx/rx/idle/sleep)\\
+Clock sync & offset 1062~$\mu$s after 60~s unsynchronised, 1.51~$\mu$s with 1~s beacons; guard 32~$\mu$s (0.32\% of a slot)\\
+Fading, Rayleigh & delivery 51.2\% at 0~dB margin, 85.7\% at 15~dB\\
+Fading, Rician & delivery 63.2\% at 0~dB margin, 92.2\% at 15~dB\\
+Forecast (measured) & mean absolute error 0.00039 vs.\ 0.00033 for repeating the last window\\
+\bottomrule\end{tabular}}
