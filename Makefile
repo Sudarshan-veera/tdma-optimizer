@@ -32,5 +32,4 @@ optimize:
 	$(PY) -m tdmaopt.hetero $(ARGS)
 
 paper:
-	python -m tdmaopt.paper --heavy
 	cd paper && pdflatex main && pdflatex main

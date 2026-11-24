@@ -90,7 +90,7 @@ Model settings (`--min-sep 0.5 --link-margin 0.9 --interference 1.5`) are printe
 Outputs: `results/opt_n*.md/.json/_layout.csv/_best.png/_compare.png`.
 
 ## Paper (theory + reproducible results)
-`make paper` regenerates every figure/table in `results/paper/` and compiles `paper/main.tex`
+`make paper` compiles `paper/main.tex` (needs a LaTeX install; the compiled `paper/main.pdf` is already in the repo)
 (IEEEtran is used automatically if installed; otherwise an article-class fallback).
 
 
